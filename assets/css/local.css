@@ -1,5 +1,5 @@
-/* Sticky footer styles
--------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono');
+
 html {
   position: relative;
   min-height: 100%;
@@ -7,6 +7,9 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
+  font-family: 'Droid Sans Mono',Courier New,monospace,sans-serif;
+  font-family: 'Droid Sans',Helvetica Neue,Helvetica,sans-serif;
+  font-size: 2em;
 }
 .footer {
   position: absolute;
@@ -34,6 +37,3 @@ body > .container {
   padding-left: 15px;
 }
 
-code {
-  font-size: 80%;
-}

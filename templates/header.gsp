@@ -7,13 +7,17 @@
   <meta name="author" content="">
   <link rel="icon" href="/favicon.ico">
 
-  <title>Sticky Footer Navbar Template for Bootstrap</title>
+  <title>Dev Notebook</title>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
     crossorigin="anonymous">
-
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script> 
+  <script>hljs.initHighlightingOnLoad();</script>
+  
   <!-- Custom styles for this template -->
-  <link href="/css/sticky-footer-navbar.css" rel="stylesheet">
+  <link href="/css/local.css" rel="stylesheet">
 </head>
    

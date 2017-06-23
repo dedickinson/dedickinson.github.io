@@ -1,15 +1,17 @@
 <%include "header.gsp"%>
 	
 	<%include "menu.gsp"%>
-	
-	<div class="page-header">
+
+	<article class="container">
+	<header>
 		<h1>${content.title}</h1>
-	</div>
+		<p><time datetime="${new java.text.SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).format(content.date)}">${new java.text.SimpleDateFormat("dd MMMM yyyy", Locale.ENGLISH).format(content.date)}</time></p>
+	</header>
 
-	<p><em>${new java.text.SimpleDateFormat("dd MMMM yyyy", Locale.ENGLISH).format(content.date)}</em></p>
+	<section>
+	${content.body}
+	</section>
 
-	<p>${content.body}</p>
-
-	<hr />
+	</article>
 	
 <%include "footer.gsp"%>
