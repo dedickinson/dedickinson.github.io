@@ -1,0 +1,9 @@
+= First Post
+Duncan Dickinson 
+2017-06-22
+:jbake-type: post
+:jbake-status: published
+:jbake-tags: blog, asciidoc
+:idprefix:
+
+Hi there
