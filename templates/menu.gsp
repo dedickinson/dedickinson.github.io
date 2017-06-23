@@ -9,12 +9,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-        <a class="navbar-brand" href="/">Duncan's notebook</a>
+        <a class="navbar-brand" href="${content.rootpath}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>
       </div>
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="${content.rootpath}${config.archive_file}">Archive</a></li>
-          <li><a href="/about.html">About</a></li>
+          <li><a href="${content.rootpath}${config.archive_file}">Archive</a></li>
+          <li><a href="${content.rootpath}/about.html">About</a></li>
         </ul>
       </div>
       <!--/.nav-collapse -->

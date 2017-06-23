@@ -13,3 +13,13 @@ ligula vehicula et iaculis sem placerat. Fusce dictum, metus at volutpat lacinia
 id auctor arcu enim eu augue. Donec ultrices turpis in mi imperdiet ac venenatis sapien sodales. In 
 consequat imperdiet nunc quis bibendum. Nulla semper, erat quis ornare tristique, lectus massa posuere 
 libero, ut vehicula lectus nunc ut lorem. Aliquam erat volutpat. 
+
+== About this site
+
+This site is built using:
+
+- http://jbake.org[JBake] for generating the static site
+- http://asciidoctor.org[Asciidoctor] for authoring content
+- http://getbootstrap.com[Bootstrap] to make it look like I can do some stylish web stuff
+- https://highlightjs.org[highlight.js] for code highlighting
+- http://glyphicons.com/[Glyphicons] nifty home icon
