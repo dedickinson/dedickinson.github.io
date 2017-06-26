@@ -3,8 +3,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <% if (content) { %>
   <meta name="keywords" content="${content?.tags?.join(',')}">
   <meta name="description" content="${content?.summary}">
+  <% } else { %>
+  <meta name="keywords" content="cloud, aws, azure, development">
+  <meta name="description" content="A technical notebook site that describes various experiments with software.">
+  <% } %>
   <meta name="author" content="Duncan Dickinson">
   <link rel="icon" href="/favicon.ico">
 
@@ -18,9 +23,6 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script> 
   <script>hljs.initHighlightingOnLoad();</script>
   
-  <link href="/css/asciidoctor.css" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
   <link href="/css/local.css" rel="stylesheet">
 </head>
    

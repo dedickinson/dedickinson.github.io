@@ -55,4 +55,5 @@ This site is built using:
 - http://asciidoctor.org[Asciidoctor] for authoring content
 - http://getbootstrap.com[Bootstrap] to make it look like I can do some stylish web stuff
 - https://highlightjs.org[highlight.js] for code highlighting
-- http://glyphicons.com/[Glyphicons] nifty home icon
+- http://glyphicons.com/[Glyphicons] nifty icons
+- http://fontawesome.io[Font Awesome] nifty icons

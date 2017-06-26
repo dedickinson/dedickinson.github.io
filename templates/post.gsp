@@ -25,3 +25,4 @@
 	</article>
 	
 <%include "footer.gsp"%>
+</body></html>

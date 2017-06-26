@@ -44,6 +44,4 @@
 	</div>
 	
 <%include "footer.gsp"%>
-</body>
-
-</html>
+</body></html>
