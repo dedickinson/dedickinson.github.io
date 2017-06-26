@@ -7,12 +7,19 @@
 	<!-- Begin page content -->
 	<div class="container">
 		<div class="page-header">
-			<h1>Sticky footer with fixed navbar</h1>
+			<h1>Dev notebook</h1>
 		</div>
 		<%published_posts.each {post ->%>
-		<a href="${post.uri}"><h1>${post.title}</h1></a>
+		<a href="${post.uri}"><h2>${post.title}</h2></a>
 		<p>${new java.text.SimpleDateFormat("dd MMMM yyyy", Locale.ENGLISH).format(post.date)}</p>
-		<p>${post.body}</p>
+		<p>
+			<span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
+			<span class="sr-only">Tags:</span>
+			<%post.tags?.each{tag->%>
+				<a href='${content.rootpath}tags/${tag}.html'>${tag}</a>
+			<%}%>
+		</p>
+		<p>${post.summary}</p>
   	<%}%>
 	</div>
 

@@ -24,7 +24,19 @@
 				<ul>
 			<% }%>
 			
-			<li>${post.date.format("dd")} - <a href="${content.rootpath}${post.uri}">${post.title}</a></li>
+			<li>
+				<details>
+					<summary><a href="${content.rootpath}${post.uri}">${post.title}</a></summary>
+					<p>Posted: <time datetime="${new java.text.SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).format(post.date)}">${new java.text.SimpleDateFormat("dd MMMM yyyy", Locale.ENGLISH).format(post.date)}</time></p>
+					<p>
+						<span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
+						<span class="sr-only">Tags:</span>
+						<%post.tags?.each{tag->%>
+							<a href='${content.rootpath}tags/${tag}.html'>${tag}</a>
+						<%}%></p>
+					<p>${post.summary}</p>
+				</details>
+			</li>
 			<%last_month = new java.text.SimpleDateFormat("MMMM yyyy", Locale.ENGLISH).format(post.date)%>
 		<%}%>
 	</ul>
