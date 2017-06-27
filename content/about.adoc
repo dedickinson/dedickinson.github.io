@@ -30,7 +30,7 @@ I haven't.
 Connecting via my https://www.linkedin.com/in/dedickinson[LinkedIn] profile is your best bet 
 if you'd like to drop me a line.
 
-Many of the posts will link to the project repository - that's the best place to not issues or 
+Many of the posts will link to the project repository - that's the best place to note issues or 
 submit pull requests.
 
 I used to pay more attention to Twitter but have found myself wandering away from the constant
