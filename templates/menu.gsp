@@ -15,6 +15,7 @@
         <ul class="nav navbar-nav">
           <li><a href="${content.rootpath}${config.archive_file}">Archive</a></li>
           <li><a href="${content.rootpath}about.html">About</a></li>
+            <li><a href="${content.rootpath}feed.xml"><i class="fa icon-rss" aria-hidden="true"></i></a></li>
         </ul>
       </div>
       <!--/.nav-collapse -->
