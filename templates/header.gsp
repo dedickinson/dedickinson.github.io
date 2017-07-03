@@ -3,12 +3,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <% if (content) { %>
+
   <link rel="alternate" type="application/atom+xml" title="Dev notebook Atom feed" href="${content.rootpath}feed.xml" />
+  <% if (content?.tags) { %>
   <meta name="keywords" content="${content?.tags?.join(',')}">
-  <meta name="description" content="${content?.summary}">
   <% } else { %>
   <meta name="keywords" content="cloud, aws, azure, development">
+  <% } %>
+  <% if (content?.summary) { %>
+  <meta name="description" content="${content?.summary}">
+  <% } else { %>
   <meta name="description" content="A technical notebook site that describes various experiments with software.">
   <% } %>
   <meta name="author" content="Duncan Dickinson">
