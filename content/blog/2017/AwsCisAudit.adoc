@@ -1,0 +1,35 @@
+= AWS CIS Audit tool
+Duncan Dickinson 
+2017-07-06
+:jbake-type: post
+:jbake-status: published
+:jbake-tags: aws, api, python, cis, security
+:summary: A set of Behave features to track an AWS environment against the CIS benchmarks
+
+The Center for Internet Security (CIS) released 
+https://d0.awsstatic.com/whitepapers/compliance/AWS_CIS_Foundations_Benchmark.pdf[guidelines for AWS] and I
+thought it'd be interesting to describe these in https://github.com/cucumber/cucumber/wiki/Gherkin[Gherkin].
+I could then back the statements with small Python scripts to run the checks through the use of the 
+the https://pythonhosted.org/behave/[Behave package].
+
+As you can see in the example feature below, the cucumber syntax is reasonably readable:
+
+[source,gherkin]
+----
+@kms
+Feature: AWS Key Management Services
+
+  @cis @level_2
+  Scenario: CIS 2.8 Ensure rotation for customer created CMKs is enabled
+    Then all KMS keys must be set to rotate annually
+---- 
+
+The statements then map to Python functions that do the actual work. Calling `behave` against the 
+set of tests generates JUnit-based XML output so I then pass them through https://github.com/inorton/junit2html[junit2html] 
+for easier reviews.
+
+Overall it's an interesting approach and gives you a user-friendly description of the tests and 
+output that could be analysed by non-developers. Better yet, failed tests could raise an alarm.
+
+A good chunk of the tests work but it's definitely not finished. 
+https://bitbucket.org/duncan_dickinson/aws-cis-audit[Check out the code].
