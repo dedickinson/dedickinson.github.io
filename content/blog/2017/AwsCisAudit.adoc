@@ -12,7 +12,7 @@ thought it'd be interesting to describe these in https://github.com/cucumber/cuc
 I could then back the statements with small Python scripts to run the checks through the use of the 
 the https://pythonhosted.org/behave/[Behave package].
 
-As you can see in the example feature below, the cucumber syntax is reasonably readable:
+As you can see in the example feature below, the Gherkin syntax is reasonably readable:
 
 [source,gherkin]
 ----
