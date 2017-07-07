@@ -1,0 +1,191 @@
+= Basic Azure web app CI pipeline
+Duncan Dickinson 
+2017-07-07
+:jbake-type: post
+:jbake-status: published
+:jbake-tags: azure, app, ci, dotnet
+:toc:
+:summary: Azure Web Apps are really handy hosting environments and support CI/CD pipelines.
+
+{summary}
+
+This is a walkthrough of some work I did to highlight:
+
+1. Configuring a project in Visual Studio Team Services (VSTS) using C# on .NET Core with ASP.NET Core
+1. Preparing a CI/CD pipeline in VSTS for deployment into an Azure App Service environment
+
+The code itself is minimal - just a random quote generator with a very limited set of quotes.
+I often use this type of codebase to demonstrate a variety of CI/CD principles - I call it my 
+fortune cookie app (based on the old https://en.wikipedia.org/wiki/Fortune_(Unix)[Unix fortune program]).
+It's a very useful platform for demonstrators as it can be stand-alone, use databases (relational or other), 
+be a web api etc and I've prepared it in a range of languages and systems.
+
+Unfortunately, VSTS does not support public repositories but the code is pretty much secondary 
+to the process I'll describe. The code is a pretty basic NET Core project that comes to life with the following:
+
+```bash
+dotnet restore
+dotnet build
+dotnet watch run
+```
+
+== VSTS and App Services
+
+For this demo I wanted to have a basic CI/CD pipeline running that:
+
+1. Built new commits
+1. Deploys automatically to an Azure App Service instance used for testing
+1. Provide a manual approval gate for the production deployment
+
+Defining a CI/CD pipeline can be approached in a few ways:
+
+1. In VSTS as a build and release process
+2. In the Azure Web App itself - this is the easiest for getting started. You can then go into VSTS and expand and configure as needed.
+
+== The Web Apps
+
+I created two Web App instancess - one for Test and one for Production. 
+
+I used the free App Service Plan tier as it's enough for the demo and you can get the whole thing 
+running for $0.
+
+NOTE: You can use slots in Web Apps to provide blue/green deployment but I'm going real simple in this demo.
+
+If you're going to setup CD via the Azure web app console, configure your Test web app instance first 
+and use it for your Continuous Delivery configuration. 
+That sets up an automatic CI/CD pipeline for you and your commits cause a release into the Test instance. 
+You can then re-engineer the pipeline to include a 
+Production environment (the second web app instance).
+
+=== The Build
+
+To start off, I created a VSTS project and committed some basic "hello, world" code using 
+the `dotnet new mvc` scaffold. Over in the Azure portal I went to `Add` -> `Team projects` 
+and linked to the VSTS team that contains the project.
+
+I then setup a web app - just a very basic config using the free tier. 
+After creating a Web App in the Azure portal, I went into the App's blade and selected the 
+"Continuous Delivery" menu option. It's pretty straight-forward to point the Web App to the 
+VSTS project and Azure sets up the initial CI/CD pipeline.
+
+==== CI
+The screenshot below demonstrates what gets created in the VSTS project's `Build` configuration:
+
+.The CI Build Items
+image::/img/azure_ci/builditems.png[Build Items,align="center"]
+
+I disabled the `Test` stage as I won't create tests for this demonstration. 
+You can see that the CI side is just doing the basic Build, Test, Publish routine.
+
+The publish step is useful to display as it shows how the `configuration` and `output` 
+parameters are set:
+
+.The CI Pipeline
+image::/img/azure_ci/cibuild.png[The CI Pipeline,align="center"]
+
+I made a minor change to the Publish Artifact step as I wanted the build artifact name to 
+include the Git check-in version:
+
+.The CI Publish step
+image::/img/azure_ci/cipublish.png[The CI Publish step,align="center"]
+
+Only the 1 CI workflow is required for this demonstration. 
+I want to build the code and package it for deployment over the various environments. 
+
+==== CD
+
+Over in the VSTS project's `Releases` section you'll find that the CD pipeline has also been configured. 
+I expanded on what Azure configured for me by creating an additional environment (`Test`). 
+Each of the Environments (`Test` & `Production`) point to their own Web App instance:
+
+.The CD Pipeline
+image::/img/azure_ci/cdpipeline.png[The CD Pipeline,align="center"]
+
+The screenshot above indicates a few things:
+
+1. Each Environment has a single task (to deploy to the Web App instance)
+1. The `Test` environment doesn't need manual approval but `Production` does - check the person icon
+
+VSTS Releases are broken up by environment, phase and task:
+
+1. An environment is essentially a release endpoint, such as a web app instance (or slot)
+1. Each environment has one or more phases that provide runtime environments for carrying out tasks.
+1. Each phase has one or more tasks that define a work item to be completed
+
+I admit it's a little confusing but, for this demo, we keep it simple and have a single phase 
+with a single task for each environment.
+
+The `Triggers` configuration for the release gives us the bridge between the CI and CD worlds. 
+You can see in the screenshot below that the release will run each time CI produces a new artifact:
+
+.CD Release Trigger
+image::/img/azure_ci/cdreleasedefinition.png[CD Release Trigger,align="center"]
+
+===== Test environment
+
+Checking out the configuration for the Test environment, you can see that there's no approval required to deploy to `Test` - we just let it happen once CI has done its thing.
+
+.CD Testing approval
+image::/img/azure_ci/cdtestapprove.png[CD Testing approval,align="center"]
+
+The `Test` environment also has some configuration to handle queues - 
+this is handy as I'm only using a single test endpoint and want to roll-up multiple changes 
+if they start backing up:
+
+.CD Testing conditions
+image::/img/azure_ci/cdtestconditions.png[CD Testing conditions,align="center"]
+
+The `Test` environment has one task, `Deploy Azure Service`. 
+This is configured to deploy the new artifact to the relevant App Service. 
+One important item to note is that I've selected "Take App Offline" - 
+this is important as it avoids problems wrt replacing the running codebase with the new one:
+
+.CD Testing app service task
+image::/img/azure_ci/cdtestdeploy.png[CD Testing app service task,align="center"]
+
+===== Production environment
+
+The `Production` environment isn't hugely different to `Test`. 
+Essentially, we want an automatic deploy into `Test` but only deploy to `Production` 
+following a manual approval gate (maybe there's a QA person): 
+
+.CD Production approval
+image::/img/azure_ci/cdprodapprove.png[CD Production approval,align="center"]
+
+The `Production` deployment is set to go ahead as long as `Test` was successfully deployed 
+(and pending approval):
+
+.CD Production conditions
+image::/img/azure_ci/cdprodconditions.png[CD Production conditions,align="center"]
+
+=== Approvals
+
+Just a quick note about approvals. When `Test` has deployed successfully, 
+the approver for `Production` receives an email similar to the one below:
+
+.Approval email
+image::/img/azure_ci/approvalemail.png[Approval email,align="center"]
+
+Clicking on the approval link will take them to the VSTS site and ask them to either 
+Approve or Reject (and provide comments):
+
+.Approval dialog
+image::/img/azure_ci/approvaldialog.png[Approval dialog,align="center"]
+
+== Conclusion
+
+Whilst this is a very simple application and CI/CD pipeline, 
+it should serve as a basis for more advanced iterations. 
+There are a number of items not covered that you should consider:
+
+1. Automated testing: unit, UI, integration, load, security tests can all run from the CI/CD pipeline
+1. Operational concerns: how are system/application logs managed and alerts configured?
+1. Related services: this demo is self-contained but how would we manage resources such as databases and changes to their schemas (for example)?
+
+Enjoy!
+
+== References
+- https://www.visualstudio.com/en-us/docs/build/get-started/aspnet-4-ci-cd-azure-automatic[Use Azure to automatically generate a CI/CD pipeline to deploy an ASP.NET app]
+- https://www.visualstudio.com/en-us/docs/build/concepts/definitions/release/environments[Environments in Release Management]
+- https://docs.microsoft.com/en-us/aspnet/core/publishing/vsts-continuous-deployment[Continuous deployment to Azure for ASP.NET Core, with VSTS]
+- https://shellmonger.com/2017/02/16/running-asp-net-core-applications-in-azure-app-service/[RUNNING ASP.NET CORE APPLICATIONS IN AZURE APP SERVICE]
