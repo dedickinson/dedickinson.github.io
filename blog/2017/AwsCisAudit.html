@@ -1,0 +1,133 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+  <link rel="alternate" type="application/atom+xml" title="Dev notebook Atom feed" href="../../feed.xml" />
+  
+  <meta name="keywords" content="aws,api,python,cis,security">
+  
+  
+  <meta name="description" content="A set of Behave features to track an AWS environment against the CIS benchmarks">
+  
+  <meta name="author" content="Duncan Dickinson">
+  <link rel="icon" href="/favicon.ico">
+
+  <title>Dev Notebook</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <link href="/css/local.css" rel="stylesheet">
+</head>
+
+	
+	<!-- Fixed navbar -->
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+          aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        <a class="navbar-brand" href="../../index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="../../archive.html">Archive</a></li>
+          <li><a href="../../about.html">About</a></li>
+            <li><a href="../../feed.xml"><i class="fa icon-rss" aria-hidden="true"></i></a></li>
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+  </nav>
+
+
+	<article class="container">
+		<header>
+			<div class="page-header">
+				<h1>AWS CIS Audit tool</h1>
+				<details>
+					<p>Posted: <time datetime="2017-07-06">06 July 2017</time></p>
+					<p>
+						<span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
+						<span class="sr-only">Tags:</span>
+						
+							<a href='../../tags/aws.html'>aws</a>
+						
+							<a href='../../tags/api.html'>api</a>
+						
+							<a href='../../tags/python.html'>python</a>
+						
+							<a href='../../tags/cis.html'>cis</a>
+						
+							<a href='../../tags/security.html'>security</a>
+						
+					</p>
+				</details>
+			</div>
+		</header>
+
+		<section>
+		<div class="paragraph">
+<p>The Center for Internet Security (CIS) released
+<a href="https://d0.awsstatic.com/whitepapers/compliance/AWS_CIS_Foundations_Benchmark.pdf">guidelines for AWS</a> and I
+thought it&#8217;d be interesting to describe these in <a href="https://github.com/cucumber/cucumber/wiki/Gherkin">Gherkin</a>.
+I could then back the statements with small Python scripts to run the checks through the use of the
+the <a href="https://pythonhosted.org/behave/">Behave package</a>.</p>
+</div>
+<div class="paragraph">
+<p>As you can see in the example feature below, the Gherkin syntax is reasonably readable:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-gherkin" data-lang="gherkin">@kms
+Feature: AWS Key Management Services
+
+  @cis @level_2
+  Scenario: CIS 2.8 Ensure rotation for customer created CMKs is enabled
+    Then all KMS keys must be set to rotate annually</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The statements then map to Python functions that do the actual work. Calling <code>behave</code> against the
+set of tests generates JUnit-based XML output so I then pass them through <a href="https://github.com/inorton/junit2html">junit2html</a>
+for easier reviews.</p>
+</div>
+<div class="paragraph">
+<p>Overall it&#8217;s an interesting approach and gives you a user-friendly description of the tests and
+output that could be analysed by non-developers. Better yet, failed tests could raise an alarm.</p>
+</div>
+<div class="paragraph">
+<p>A good chunk of the tests work but it&#8217;s definitely not finished.
+<a href="https://bitbucket.org/duncan_dickinson/aws-cis-audit">Check out the code</a>.</p>
+</div>
+		</section>
+	</article>
+	
+  <footer class="footer">
+    <div class="container">
+      <p class="text-muted"> 
+        <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+          <img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" />
+        </a>
+        &copy;2017 Duncan Dickinson
+      </p>
+    </div>
+  </footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+  
+</body></html>

@@ -1,0 +1,210 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+  <link rel="alternate" type="application/atom+xml" title="Dev notebook Atom feed" href="../../feed.xml" />
+  
+  <meta name="keywords" content="aws,lambda,python,oracle">
+  
+  
+  <meta name="description" content="Using an AWS Python Lambda to read a CSV in S3 and update an Oracle RDS instance.">
+  
+  <meta name="author" content="Duncan Dickinson">
+  <link rel="icon" href="/favicon.ico">
+
+  <title>Dev Notebook</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <link href="/css/local.css" rel="stylesheet">
+</head>
+
+	
+	<!-- Fixed navbar -->
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+          aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        <a class="navbar-brand" href="../../index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="../../archive.html">Archive</a></li>
+          <li><a href="../../about.html">About</a></li>
+            <li><a href="../../feed.xml"><i class="fa icon-rss" aria-hidden="true"></i></a></li>
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+  </nav>
+
+
+	<article class="container">
+		<header>
+			<div class="page-header">
+				<h1>cx_Oracle with AWS Lambda</h1>
+				<details>
+					<p>Posted: <time datetime="2017-06-22">22 June 2017</time></p>
+					<p>
+						<span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
+						<span class="sr-only">Tags:</span>
+						
+							<a href='../../tags/aws.html'>aws</a>
+						
+							<a href='../../tags/lambda.html'>lambda</a>
+						
+							<a href='../../tags/python.html'>python</a>
+						
+							<a href='../../tags/oracle.html'>oracle</a>
+						
+					</p>
+				</details>
+			</div>
+		</header>
+
+		<section>
+		<div class="paragraph">
+<p>This work was part of a demonstration to a development team regarding the use of AWS for
+web-based applications. I was demonstrating a few approaches:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Using a Lift &amp; Shift approach that replicated the Oracle Database + PHP web app environment:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Input data (CSV) sent to S3 via a nightly upload</p>
+</li>
+<li>
+<p>Change to the S3 bucket triggers a Lambda to update the RDS-based Database</p>
+</li>
+<li>
+<p>PHP application largely the same but with alterations that made it more self-contained</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Going "serverless" by:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Input data (CSV) sent to S3 via a nightly upload</p>
+</li>
+<li>
+<p>Change to the S3 bucket triggers a Lambda that performs an ETL process to generate a set of
+static <a href="http://jsonapi.org">JSON API</a> files to be stored in another S3 bucket</p>
+</li>
+<li>
+<p>An API Gateway then maps an API to the underlying S3-based JSON API data</p>
+</li>
+<li>
+<p>Two web apps were then developed by the dev team: a PHP that used the API and a JavaScript-based
+app that ran client-side.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>In order to achieve item 1.b we needed to setup a Python 2 Lambda that can connect to the
+Oracle database. Support for this is via the <a href="https://oracle.github.io/python-cx_Oracle/">cx_Oracle</a>
+module but it requires more than a <code>pip install</code> as the module expects access to the Oracle client.
+You can see what happens by running up a container (<code>docker run --rm -ti python:3 /bin/bash</code>)
+and trying out the module:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">root@6bba52c06926:/# python -m pip install cx_Oracle --pre
+Collecting cx_Oracle
+  Downloading cx_Oracle-6.0rc1-cp36-cp36m-manylinux1_x86_64.whl (487kB)
+    100% |████████████████████████████████| 491kB 2.0MB/s
+Installing collected packages: cx-Oracle
+Successfully installed cx-Oracle-6.0rc1
+root@6bba52c06926:/# python
+Python 3.6.1 (default, May 11 2017, 22:14:44)
+[GCC 4.9.2] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+&gt;&gt;&gt; import cx_Oracle
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+cx_Oracle.DatabaseError: DPI-1047: Oracle Client library cannot be loaded: libclntsh.so: cannot open shared object file: No such file or directory. See https://oracle.github.io/odpi/doc/installation.html for help</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>I have a few images with cx_Oracle running but needed to package up a distributable that can go
+to Lambda. As you&#8217;ll see in the <a href="https://bitbucket.org/duncan_dickinson/lambda-cx_oracle-public">Bitbucket repo&#8217;s Readme</a>,
+I ended up with the following process:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a container image (based on <code>amazonlinux</code>) that:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Provides the requisite software and configuration</p>
+</li>
+<li>
+<p>Packages up the required shared libraries (<em>after a lot of web searching and testing</em>)</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Run up an instance of the image and copy out the package</p>
+</li>
+<li>
+<p>Create a Lambda with:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>The package as the Lambda source</p>
+</li>
+<li>
+<p>The correct envrionment variables for accessing the shared libraries</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The end product is a repeatable deployment process - we just needed to provide the Python script
+to read from S3 into the Oracle RDS DB.</p>
+</div>
+		</section>
+	</article>
+	
+  <footer class="footer">
+    <div class="container">
+      <p class="text-muted"> 
+        <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+          <img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" />
+        </a>
+        &copy;2017 Duncan Dickinson
+      </p>
+    </div>
+  </footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+  
+</body></html>
