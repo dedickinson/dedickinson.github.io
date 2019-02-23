@@ -4,6 +4,7 @@ Try on the thinking hats (Part 1)
 :author: Duncan
 :tags: 6hats, problem solving, thinking
 :slug: try-on-thinking-hats-part-1
+:next_article: put-on-hat-when-asking-questions-part-2
 
 *Instead of judging our way forward, we need to design our way forward. We need to be thinking 'what can be', not just about 'what is'* - Edward de Bono
 

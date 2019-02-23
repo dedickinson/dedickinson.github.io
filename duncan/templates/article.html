@@ -30,14 +30,12 @@
       <time datetime="{{ article.locale_date }}">{{ article.locale_date }}</time>
     </p>
   </header>
-  <section class="blog-post">
+  <section class="blog-post-body">
     {{article.content}}
   </section>
 
   <footer class='blog-footer'>
     {% if article.tags %}
-
-
     <ul class="list-group list-group-horizontal blog-post-meta blog-post-tags">
       <li class="list-group-item">Tags:
         {% for tag in article.tags |sort %}
@@ -45,8 +43,8 @@
       </li>
       {% endfor %}
     </ul>
-
     {% endif %}
+
     <p class="post-nav">
       {% if article.next_article %}
       <a class="post-nav-next" href="{{ SITEURL }}/{{ article.next_article.url}}">
