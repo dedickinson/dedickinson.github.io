@@ -1,0 +1,16 @@
+Hi there anonymous,
+
+1) Good point - I was using D...
+#####################################################
+:date: 2009-04-22 08:40
+:author: Anonymous
+:slug: post-9016208274421118496
+:status: published
+
+| Hi there anonymous,
+| 1) Good point - I was using DC Elements as that's what they discuss in the RDFa primer. I'll certainly use dc terms from now. That being said, the new schema maps to the old one.
+| 2) My team develops word processing solutions that allow documents to be converted into HTML. At present, Word and OpenOffice lack the ability to set rel attributes so we're looking at the URI as a "proxy" representation that we can resolve before rendering to XHTML (+RDFa) (see also: http://ptsefton.com/2009/04/08/journal-20-embedding-semantics-in-documents.htm). This is important as many academic authors don't write articles in HTML editing tools - nor do they do much investigating into how RDFa mechanisms works.
+| 3. Norm Walsh's tool and FOAF-a-matic are good examples of what I'm suggesting. It's just a basic/early start on tools that help generate LinkedData without getting in the way of authoring. I would agree that it's still cumbersome but at least we could remove the issue of selecting the correct schemas for well-known structures (such as journal articles).
+| Thanks for the feedback!
+| Cheers,
+| Duncan

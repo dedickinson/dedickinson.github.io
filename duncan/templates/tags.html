@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}{{ SITENAME }} - Tags{% endblock %}
+
+{% block content %}
+
+<div class="card bg-light mb-3">
+  <div class="card-header">Tags</div>
+
+  <ul class="list-group list-group-flush"></ul>
+  {% for tag, articles in tags |sort %}
+
+  <li class="list-group-item">
+    <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a> 
+    <span class="badge badge-primary badge-pill">{{ articles|count }}</span>
+  </li>
+  {% endfor %}
+  </ul>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,60 @@
+= cx_Oracle with AWS Lambda
+
+:date: 2017-06-22
+:tags: aws, lambda, python, oracle
+:slug: LambdacxOracle
+:summary: Using an AWS Python Lambda to read a CSV in S3 and update an Oracle RDS instance.
+
+This work was part of a demonstration to a development team regarding the use of AWS for 
+web-based applications. I was demonstrating a few approaches:
+
+. Using a Lift & Shift approach that replicated the Oracle Database + PHP web app environment:
+.. Input data (CSV) sent to S3 via a nightly upload
+.. Change to the S3 bucket triggers a Lambda to update the RDS-based Database
+.. PHP application largely the same but with alterations that made it more self-contained
+. Going "serverless" by:
+.. Input data (CSV) sent to S3 via a nightly upload
+.. Change to the S3 bucket triggers a Lambda that performs an ETL process to generate a set of
+    static http://jsonapi.org[JSON API] files to be stored in another S3 bucket
+.. An API Gateway then maps an API to the underlying S3-based JSON API data
+.. Two web apps were then developed by the dev team: a PHP that used the API and a JavaScript-based
+    app that ran client-side.
+
+In order to achieve item 1.b we needed to setup a Python 2 Lambda that can connect to the 
+Oracle database. Support for this is via the https://oracle.github.io/python-cx_Oracle/[cx_Oracle]
+module but it requires more than a `pip install` as the module expects access to the Oracle client. 
+You can see what happens by running up a container (`docker run --rm -ti python:3 /bin/bash`) 
+and trying out the module: 
+
+[source,bash]
+----
+root@6bba52c06926:/# python -m pip install cx_Oracle --pre
+Collecting cx_Oracle
+  Downloading cx_Oracle-6.0rc1-cp36-cp36m-manylinux1_x86_64.whl (487kB)
+    100% |████████████████████████████████| 491kB 2.0MB/s 
+Installing collected packages: cx-Oracle
+Successfully installed cx-Oracle-6.0rc1
+root@6bba52c06926:/# python
+Python 3.6.1 (default, May 11 2017, 22:14:44) 
+[GCC 4.9.2] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import cx_Oracle
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+cx_Oracle.DatabaseError: DPI-1047: Oracle Client library cannot be loaded: libclntsh.so: cannot open shared object file: No such file or directory. See https://oracle.github.io/odpi/doc/installation.html for help
+----
+
+I have a few images with cx_Oracle running but needed to package up a distributable that can go 
+to Lambda. As you'll see in the https://bitbucket.org/duncan_dickinson/lambda-cx_oracle-public[Bitbucket repo's Readme],
+I ended up with the following process:
+
+. Create a container image (based on `amazonlinux`) that:
+.. Provides the requisite software and configuration
+.. Packages up the required shared libraries (_after a lot of web searching and testing_)
+. Run up an instance of the image and copy out the package
+. Create a Lambda with:
+.. The package as the Lambda source
+.. The correct envrionment variables for accessing the shared libraries
+
+The end product is a repeatable deployment process - we just needed to provide the Python script 
+to read from S3 into the Oracle RDS DB.

@@ -1,0 +1,8 @@
+Three quick things: 1) you're using the incorrect ...
+#####################################################
+:date: 2009-04-22 00:14
+:author: Anonymous
+:slug: post-4537070858160198343
+:status: published
+
+Three quick things: 1) you're using the incorrect DC property; use the new dcterms one, 2) Why encode this all in the URI when you could just use RDFa (add the property to the rel attribute)?, and 3) take a look at a `little photo app <http://norman.walsh.name/2006/09/13/photodata>`__ Norm Walsh was once experimenting with.

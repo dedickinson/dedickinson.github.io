@@ -1,0 +1,12 @@
+Suggestion: Two steps. 
+
+1. Bring it all together ...
+#####################################################
+:date: 2009-06-23 12:58
+:author: Peter Sefton
+:slug: post-8193318832493056569
+:status: published
+
+| Suggestion: Two steps.
+| 1. Bring it all together using The Fascinator so at least people SEEKING info can find stuff.
+| 2. Add editing / annotation etc tools to The Fasciantor using widgets etc that are as arms-length as possible and route the changes back to the source systems. This is kind if what we will need to do on the desktop anyway.

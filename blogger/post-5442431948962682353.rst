@@ -1,0 +1,115 @@
+Design science and research systems
+###################################
+:date: 2014-11-29 07:28
+:author: Duncan
+:tags: data, research
+:slug: post-5442431948962682353
+:status: draft
+
+| Following up on my last post's overview regarding research data as an artificial object, it's not unreasonable to ask why I'd bother. I prefer to be on teams that build things rather than talk about building things. However, I would put forward that it's important to have a good understanding of what is being built and to reflect on prior art that helps you avoid mistakes as well as utilise existing knowledge.
+
+.. raw:: html
+
+   <div>
+
+In developing eResearch systems it's useful to know about a number of things, including:
+
+.. raw:: html
+
+   <div>
+
+-  What is the research process?
+-  What sort of information/data is used?
+-  How is that info/data generated, transformed and published?
+
+.. raw:: html
+
+   <div>
+
+Similar areas are analysed in business and government systems and, as I mentioned, these are rich areas of study for the information systems (IS) discipline. What I am suggesting is that IS provides a number of areas worth considering in our efforts.
+
+.. raw:: html
+
+   </div>
+
+.. raw:: html
+
+   <div>
+
+.. raw:: html
+
+   </div>
+
+.. raw:: html
+
+   <div>
+
+`March & Smith (1995) <https://www.zotero.org/dedickinson/items/itemKey/9GNWKWTJ/q/march>`__ is a useful starting point in considering the study of research systems and research data. Within the article they explore the concepts of natural science and design science with the former helping to build an understanding of areas such as human behaviour and the latter evaluates how well an (artificial) artefact fulfils its stated goal. Without ignoring the natural science side of things, I'm primarily interested in the design science as it is a more applied field. Design science provides a vehicle for studying the building and evaluation of systems in the pursuit of meeting a human goal.
+
+.. raw:: html
+
+   </div>
+
+.. raw:: html
+
+   <div>
+
+.. raw:: html
+
+   </div>
+
+.. raw:: html
+
+   <div>
+
+`Simon (1996) <https://www.zotero.org/dedickinson/items/itemKey/PZD2S7M4>`__ .
+
+.. raw:: html
+
+   </div>
+
+.. raw:: html
+
+   <div>
+
+.. raw:: html
+
+   </div>
+
+.. raw:: html
+
+   <div>
+
+We can regard research data as an interface into the inner environment of the research question. The evaluation of the data's worth is a question of how well that interface captures the inner environment and how the outer environment views this interface. Research systems also provide an interface into part of the act of research and their utility can be measured in terms of how well they allow those in the outer environment (researchers)
+
+.. raw:: html
+
+   </div>
+
+.. raw:: html
+
+   </div>
+
+.. raw:: html
+
+   </div>
+
+.. raw:: html
+
+   <div>
+
+.. raw:: html
+
+   </div>
+
+.. raw:: html
+
+   <div>
+
+.. raw:: html
+
+   </div>
+
+.. raw:: html
+
+   </p>

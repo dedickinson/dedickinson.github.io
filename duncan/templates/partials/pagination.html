@@ -1,0 +1,26 @@
+{% if DEFAULT_PAGINATION %}
+<nav aria-label="Article listing navigation">
+  <ul class="pagination justify-content-end">
+    {% if articles_page.has_previous() %}
+    <li class="page-item">
+      <a class="page-link" href="{{ SITEURL }}/{{ articles_previous_page.url }}" tabindex="-1"
+        aria-disabled="true">Previous</a>
+    </li>
+    {% endif %}
+    {% if False %}
+    {% for ix in range(1, articles_paginator.num_pages + 1) %}
+    {% if ix == 1 %}
+    <li class="page-item"><a class="page-link" href="/index.html">{{ ix }}</a></li>
+    {% else %}
+    <li class="page-item"><a class="page-link" href="/index{{ ix }}.html">{{ ix }}</a></li>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    {% if articles_page.has_next() %}
+    <li class="page-item">
+      <a class="page-link" href="{{ SITEURL }}/{{ articles_next_page.url }}">Next</a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
+{% endif %}

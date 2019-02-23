@@ -1,0 +1,13 @@
+Do you really have 12 months?
+#############################
+:date: 2015-02-19 10:07
+:author: Duncan
+:slug: post-1017414548656529845
+:status: draft
+
+| 
+| Back in 2013 a colleague and I `presented a Birds of a Feathe <https://eresearchau.files.wordpress.com/2013/08/eresau2013_submission_421.pdf>`__\ r at eResearch Australasia
+| |image0|
+
+.. |image0| image:: webkit-fake-url://11c38959-a069-4610-8263-e2e8771a2fd4/image.tiff
+

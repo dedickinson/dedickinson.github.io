@@ -1,0 +1,10 @@
+Desktop eResearch Revolution: or How I stopped worrying and learnt to 
+######################################################################
+:date: 2009-03-05 18:56
+:author: Anonymous
+:tags: eresearch software
+:slug: post-3209030484969838519
+:status: draft
+
+| Well, Peter Sefton has given an overview of our newest project `over on his blog <http://ptsefton.com/2009/03/05/desktop-eresearch-revolution.htm/trackback>`__. For me it's great to not just see this project going but to be involved. What I thought I'd do here is release a range of ideas that I've had built up on the topic. First though, I have to assure Peter that I am not intending to be an `Architecture Astronaut <http://www.joelonsoftware.com/articles/fog0000000018.html>`__\ and suggest that he and others let me know if I'm heading towards orbit.
+| I posted a "background" piece if you want to really see behind the scenes but I don't want to clog up this post.

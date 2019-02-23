@@ -1,0 +1,13 @@
+Accessibility
+#############
+:date: 2014-12-19 07:00
+:author: Duncan
+:tags: development, project management
+:slug: accessibility
+:status: published
+
+| *Following accessibility practices opens your system up to more users. That, and it may be a legal requirement!*
+| So your application has a super-rich interface featuring lots of CSS, scripting and hoopy asynch data loads. But how does a visually impaired person “see” all of this? How does a physically impaired person navigate your menus with a mouse? These questions (and many along this line) are likely to go under the radar in your project team unless you have a contractual requirement for accessibility or a person with a disability on your team or stakeholder group. However, accessibility (a11y) is something worth being aware of from the initial stages of your project as designing and implementing accessibility changes for an existing system can be difficult.
+| There is a very useful side-effect gained by considering accessibility: you really think about fancy features and their utility in terms of meeting multiple audiences. Whilst the technical team may be keen on some eye candy, chances are you could make your system difficult for a number of users. By considering how far you could/should push your UI, you also start to consider the additional support requirements introduced by those nifty effects.
+| A lot of people came across web accessibility in terms of content. Rules such as “provide useful text with images” and “use HTML elements correctly” were part of many “writing for the web” courses. These content-focussed requirements are still important but rich web-based applications provide more than just content and it’s important to know how to use web technologies in an accessible manner. The `W3C Accessibility site <http://www.w3.org/standards/webdesign/accessibility>`__ provides an extremely easy to read resource for understanding how to build accessible web content and applications. This site should be your first stop in understanding accessibility on the web.
+| Your team doesn’t have to do all of the accessibility heavy lifting itself. A number of web UI toolkit are developed with accessibility in mind and provide information as to how the various components (widgets) meet accessibility guidelines. For a good example, see the `Dojo a11y requirements page <https://dojotoolkit.org/reference-guide/1.9/developer/a11y-requirements.html#developer-a11y-requirements>`__ - it describes how the Dojo developers work towards accessible user interface components and could help inform any custom UI modules you decide to build.

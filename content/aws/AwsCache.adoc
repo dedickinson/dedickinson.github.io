@@ -1,0 +1,41 @@
+= AWS Cache and reporting demo
+
+:date: 2017-07-04
+:slug: AwsCache
+:tags: aws, api, python, asciidoctor
+:summary: A python module for caching AWS API calls and a demo reporting tool that uses it
+
+Calling the AWS API using the https://boto3.readthedocs.io/en/latest/[Boto3] package for Python
+is straight forward but it can be useful to have a cache of the responses. These two projects
+created an initial caching tool and an associated report generator.
+
+Whilst the AWS Console is reasonably user-friendly, it can be difficult to paint a full picture
+of your AWS environment. This set of work sought to generate useful reports for readers such as 
+netowrk and security folks. The goal was to produce summary information regarding key AWS-based 
+resources and even (gulp) network diagrams.
+
+Two repositories make up the resulting codebase:
+
+https://bitbucket.org/duncan_dickinson/awscache[AWS Cache]::
+    A Python package that calls the AWS API (through Boto3) and stores the results in an SQLite
+    database. The system uses the http://www.sqlalchemy.org[SQLAlchemy] toolkit to store the data
+    and manage relationships. This work also gave me the opportunity to create my first Python 
+    wheel.
+
+https://bitbucket.org/duncan_dickinson/awsreporter[AWS Reporter]::
+    A sample script that uses the AWS Cache to generate reports on an AWS account. 
+    The script calls AWS Cache to build the cache then processes a set of Jinja 2 templates
+    to produce a set of http://asciidoctor.org[Asciidoctor] documents. These are then easily
+    transformed to HTML via a docker-based command.
+
+Just running the `awscache` command (made available via the AWS Cache package) with the right
+credentials will generate an SQLite database with details of your key AWS resources - such as
+IAM users/groups, KMS keys, Cloud Formation stacks, and Network topology (VPCs, VPNs, subnets etc).
+You can then use this database file in various reporting/querying tools.
+
+The AWS Reporter project utilises the cache to generate HTML-based reports. After a fair bit 
+of effort I even managed to generate a diagram for each VPC that illustrates the various subnets,
+route tables, gateways and their relationships.
+
+Unfortunately I can't give you sample outputs - best not to reveal too much about the AWS 
+environment.
