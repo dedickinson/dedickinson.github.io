@@ -52,6 +52,3 @@ There is a huge spectrum of people that state that their projects are Agile. Som
 
 It’s important that we sometimes sit back and make sure we’re really being Agile and not just process-gazing. Those that claim to be agile should be checked for that claim and helped where they fall short. Some of my projects aren’t agile and I’m honest when I say we use aspects of agile methodology but I don’t claim the approach meets the agile manifesto. I also try to encourage the movement of those projects back to the agile path. However, I’m often a little perplexed when I use something like a use case template to help guide thinking and get told “use cases aren’t agile”. In further posts I want to explore why I think they (and other tools) are and why people have constructed some sort of checklist of what isn’t agile.
 
-.. raw:: html
-
-   </p>

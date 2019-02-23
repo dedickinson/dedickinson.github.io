@@ -1,7 +1,7 @@
 Retrospective primitives - cohesion
 ###################################
 :date: 2017-07-07 14:22
-:author: Duncan
+:author: Duncan Dickinson
 :tags: cohesion, retrospective, primitives
 :slug: retrospective-primitives-cohesion
 :status: published

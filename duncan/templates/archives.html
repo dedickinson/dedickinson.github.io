@@ -11,7 +11,12 @@
 <article class="post">
     <div class="card bg-light mb-3">
         <div class="card-body">
-            <h5 class="card-title">{{ article.title }}</h5>
+            <h5 class="card-title">
+                <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
+                    title="Permalink to {{ article.title|striptags }}">
+                    {{ article.title }}
+                </a>
+            </h5>
             <h6 class="card-subtitle mb-2 text-muted"><time
                     datetime="{{ article.locale_date }}">{{ article.locale_date }}</time></h6>
 
