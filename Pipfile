@@ -12,6 +12,7 @@ lxml = "*"
 markdown = "*"
 pelican-plugin-installer = "*"
 doc8 = "*"
+ghp-import = "*"
 
 [requires]
 python_version = "3.6"
