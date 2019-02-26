@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Prag-o-matic - containers</title><link href="http://www.duncan.dickinson.name/" rel="alternate"></link><link href="https://www.duncan.dickinson.name/feeds/containers.atom.xml" rel="self"></link><id>http://www.duncan.dickinson.name/</id><updated>2017-06-22T00:00:00+10:00</updated><entry><title>cx_Oracle with AWS Lambda</title><link href="http://www.duncan.dickinson.name/2017/06/LambdacxOracle.html" rel="alternate"></link><published>2017-06-22T00:00:00+10:00</published><updated>2017-06-22T00:00:00+10:00</updated><author><name>Duncan Dickinson</name></author><id>tag:www.duncan.dickinson.name,2017-06-22:/2017/06/LambdacxOracle.html</id><summary type="html">Using an AWS Python Lambda to read a CSV in S3 and update an Oracle RDS instance.</summary><content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;This work was part of a demonstration to a development team regarding the use of AWS for
+web-based applications. I was demonstrating a few approaches:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="olist arabic"&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;
+&lt;p&gt;Using a Lift &amp;amp; Shift approach that replicated the Oracle Database + PHP web app environment:&lt;/p&gt;
+&lt;div class="olist loweralpha"&gt;
+&lt;ol class="loweralpha" type="a"&gt;
+&lt;li&gt;
+&lt;p&gt;Input data (CSV) sent to S3 via a nightly upload&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Change to the S3 bucket triggers a Lambda to update the RDS-based Database&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;PHP application largely the same but with alterations that made it more self-contained&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Going "serverless" by:&lt;/p&gt;
+&lt;div class="olist loweralpha"&gt;
+&lt;ol class="loweralpha" type="a"&gt;
+&lt;li&gt;
+&lt;p&gt;Input data (CSV) sent to S3 via a nightly upload&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Change to the S3 bucket triggers a Lambda that performs an ETL process to generate a set of
+static &lt;a href="http://jsonapi.org"&gt;JSON API&lt;/a&gt; files to be stored in another S3 bucket&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;An API Gateway then maps an API to the underlying S3-based JSON API data&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Two web apps were then developed by the dev team: a PHP that used the API and a JavaScript-based
+app that ran client-side.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;In order to achieve item 1.b we needed to setup a Python 2 Lambda that can connect to the
+Oracle database. Support for this is via the &lt;a href="https://oracle.github.io/python-cx_Oracle/"&gt;cx_Oracle&lt;/a&gt;
+module but it requires more than a &lt;code&gt;pip install&lt;/code&gt; as the module expects access to the Oracle client.
+You can see what happens by running up a container (&lt;code&gt;docker run --rm -ti python:3 /bin/bash&lt;/code&gt;)
+and trying out the module:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="highlight"&gt;&lt;code class="language-bash" data-lang="bash"&gt;root@6bba52c06926:/# python -m pip install cx_Oracle --pre
+Collecting cx_Oracle
+  Downloading cx_Oracle-6.0rc1-cp36-cp36m-manylinux1_x86_64.whl (487kB)
+    100% |████████████████████████████████| 491kB 2.0MB/s
+Installing collected packages: cx-Oracle
+Successfully installed cx-Oracle-6.0rc1
+root@6bba52c06926:/# python
+Python 3.6.1 (default, May 11 2017, 22:14:44)
+[GCC 4.9.2] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+&amp;gt;&amp;gt;&amp;gt; import cx_Oracle
+Traceback (most recent call last):
+  File "&amp;lt;stdin&amp;gt;", line 1, in &amp;lt;module&amp;gt;
+cx_Oracle.DatabaseError: DPI-1047: Oracle Client library cannot be loaded: libclntsh.so: cannot open shared object file: No such file or directory. See https://oracle.github.io/odpi/doc/installation.html for help&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;I have a few images with cx_Oracle running but needed to package up a distributable that can go
+to Lambda. As you&amp;#8217;ll see in the &lt;a href="https://bitbucket.org/duncan_dickinson/lambda-cx_oracle-public"&gt;Bitbucket repo&amp;#8217;s Readme&lt;/a&gt;,
+I ended up with the following process:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="olist arabic"&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;
+&lt;p&gt;Create a container image (based on &lt;code&gt;amazonlinux&lt;/code&gt;) that:&lt;/p&gt;
+&lt;div class="olist loweralpha"&gt;
+&lt;ol class="loweralpha" type="a"&gt;
+&lt;li&gt;
+&lt;p&gt;Provides the requisite software and configuration&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Packages up the required shared libraries (&lt;em&gt;after a lot of web searching and testing&lt;/em&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Run up an instance of the image and copy out the package&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Create a Lambda with:&lt;/p&gt;
+&lt;div class="olist loweralpha"&gt;
+&lt;ol class="loweralpha" type="a"&gt;
+&lt;li&gt;
+&lt;p&gt;The package as the Lambda source&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The correct envrionment variables for accessing the shared libraries&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The end product is a repeatable deployment process - we just needed to provide the Python script
+to read from S3 into the Oracle RDS DB.&lt;/p&gt;
+&lt;/div&gt;
+</content><category term="aws"></category><category term="lambda"></category><category term="python"></category><category term="oracle"></category></entry></feed>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Prag-o-matic - aws</title><link href="http://www.duncan.dickinson.name/" rel="alternate"></link><link href="https://www.duncan.dickinson.name/feeds/aws.atom.xml" rel="self"></link><id>http://www.duncan.dickinson.name/</id><updated>2017-07-06T00:00:00+10:00</updated><entry><title>AWS CIS Audit tool</title><link href="http://www.duncan.dickinson.name/2017/07/AwsCisAudit.html" rel="alternate"></link><published>2017-07-06T00:00:00+10:00</published><updated>2017-07-06T00:00:00+10:00</updated><author><name>Duncan Dickinson</name></author><id>tag:www.duncan.dickinson.name,2017-07-06:/2017/07/AwsCisAudit.html</id><summary type="html">A set of Behave features to track an AWS environment against the CIS benchmarks</summary><content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;The Center for Internet Security (CIS) released
+&lt;a href="https://d0.awsstatic.com/whitepapers/compliance/AWS_CIS_Foundations_Benchmark.pdf"&gt;guidelines for AWS&lt;/a&gt; and I
+thought it&amp;#8217;d be interesting to describe these in &lt;a href="https://github.com/cucumber/cucumber/wiki/Gherkin"&gt;Gherkin&lt;/a&gt;.
+I could then back the statements with small Python scripts to run the checks through the use of the
+the &lt;a href="https://pythonhosted.org/behave/"&gt;Behave package&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;As you can see in the example feature below, the Gherkin syntax is reasonably readable:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="highlight"&gt;&lt;code class="language-gherkin" data-lang="gherkin"&gt;@kms
+Feature: AWS Key Management Services
+
+  @cis @level_2
+  Scenario: CIS 2.8 Ensure rotation for customer created CMKs is enabled
+    Then all KMS keys must be set to rotate annually&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The statements then map to Python functions that do the actual work. Calling &lt;code&gt;behave&lt;/code&gt; against the
+set of tests generates JUnit-based XML output so I then pass them through &lt;a href="https://github.com/inorton/junit2html"&gt;junit2html&lt;/a&gt;
+for easier reviews.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Overall it&amp;#8217;s an interesting approach and gives you a user-friendly description of the tests and
+output that could be analysed by non-developers. Better yet, failed tests could raise an alarm.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;A good chunk of the tests work but it&amp;#8217;s definitely not finished.
+&lt;a href="https://bitbucket.org/duncan_dickinson/aws-cis-audit"&gt;Check out the code&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+</content><category term="aws"></category><category term="api"></category><category term="python"></category><category term="cis"></category><category term="security"></category></entry><entry><title>AWS Cache and reporting demo</title><link href="http://www.duncan.dickinson.name/2017/07/AwsCache.html" rel="alternate"></link><published>2017-07-04T00:00:00+10:00</published><updated>2017-07-04T00:00:00+10:00</updated><author><name>Duncan Dickinson</name></author><id>tag:www.duncan.dickinson.name,2017-07-04:/2017/07/AwsCache.html</id><summary type="html">A python module for caching AWS API calls and a demo reporting tool that uses it</summary><content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;Calling the AWS API using the &lt;a href="https://boto3.readthedocs.io/en/latest/"&gt;Boto3&lt;/a&gt; package for Python
+is straight forward but it can be useful to have a cache of the responses. These two projects
+created an initial caching tool and an associated report generator.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Whilst the AWS Console is reasonably user-friendly, it can be difficult to paint a full picture
+of your AWS environment. This set of work sought to generate useful reports for readers such as
+netowrk and security folks. The goal was to produce summary information regarding key AWS-based
+resources and even (gulp) network diagrams.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Two repositories make up the resulting codebase:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="dlist"&gt;
+&lt;dl&gt;
+&lt;dt class="hdlist1"&gt;&lt;a href="https://bitbucket.org/duncan_dickinson/awscache"&gt;AWS Cache&lt;/a&gt;&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;A Python package that calls the AWS API (through Boto3) and stores the results in an SQLite
+database. The system uses the &lt;a href="http://www.sqlalchemy.org"&gt;SQLAlchemy&lt;/a&gt; toolkit to store the data
+and manage relationships. This work also gave me the opportunity to create my first Python
+wheel.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class="hdlist1"&gt;&lt;a href="https://bitbucket.org/duncan_dickinson/awsreporter"&gt;AWS Reporter&lt;/a&gt;&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;A sample script that uses the AWS Cache to generate reports on an AWS account.
+The script calls AWS Cache to build the cache then processes a set of Jinja 2 templates
+to produce a set of &lt;a href="http://asciidoctor.org"&gt;Asciidoctor&lt;/a&gt; documents. These are then easily
+transformed to HTML via a docker-based command.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Just running the &lt;code&gt;awscache&lt;/code&gt; command (made available via the AWS Cache package) with the right
+credentials will generate an SQLite database with details of your key AWS resources - such as
+IAM users/groups, KMS keys, Cloud Formation stacks, and Network topology (VPCs, VPNs, subnets etc).
+You can then use this database file in various reporting/querying tools.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The AWS Reporter project utilises the cache to generate HTML-based reports. After a fair bit
+of effort I even managed to generate a diagram for each VPC that illustrates the various subnets,
+route tables, gateways and their relationships.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Unfortunately I can&amp;#8217;t give you sample outputs - best not to reveal too much about the AWS
+environment.&lt;/p&gt;
+&lt;/div&gt;
+</content><category term="aws"></category><category term="api"></category><category term="python"></category><category term="asciidoctor"></category></entry></feed>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <title>Version control</title>
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="referrer" content="origin" />
+  <meta name="generator" content="Pelican" />
+
+  <link href="https://www.duncan.dickinson.name/atom.xml" type="application/atom+xml" rel="alternate"
+    title="Prag-o-matic Atom Feed" />
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="http://www.duncan.dickinson.name/theme/css/highlight/vs.css">
+
+  <link rel="stylesheet" href="http://www.duncan.dickinson.name/theme/css/site.css">
+
+<link href="http://www.duncan.dickinson.name/2014/12/version-control.html" rel="canonical" />
+
+<meta name="description" content="Don’t write a single line of code until you have a version control system in place Almost all developers know of at least one version...">
+
+<meta name="author" content="Duncan">
+
+<meta name="tags" content="development">
+<meta name="tags" content="project management">
+
+
+</head>
+
+<body class="home-template">
+  <div class="container">
+    <header class="blog-header">
+<div class="jumbotron site-title">
+    <h1>Prag-o-matic</h1>
+    <p class="lead">A blog.</p>
+</div><nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+        aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                    <a class="nav-link" href="/pages/about.html">About</a>
+                </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/archives.html">Archives</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="http://www.linkedin.com/in/dedickinson">LinkedIn</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://github.com/dedickinson">Github</a>
+            </li>
+
+        </ul>
+        <div class="float-right">
+            <a href="/atom.xml"><i class="fas fa-rss" style="font-size: 1.5em"></i></a>
+        </div>
+    </div>
+</nav>    </header>
+
+    <section>
+<article class='blog-post'>
+  <header>
+    <h1 class='blog-post-title'>Version control</h1>
+    <p class="blog-post-meta">Posted on
+      <time datetime="Fri 26 December 2014">Fri 26 December 2014</time>
+    </p>
+  </header>
+  <section class="blog-post-body">
+    <p><em>Don’t write a single line of code until you have a version control system in place</em></p>
+<p>Almost all developers know of at least one version control system (also called source code control or revision control). These systems provide a backup of your work and allow you to dip back into the past to find some lost code or work out where a bug may have crept in. However, with a head full of steam and the desire to get a prototype going to demo to the team/client/world you’ll fire up an IDE and start coding and version control won’t enter your head. Stop for just 5 minutes and get a version control repository running first. This is an insurance policy for a number of things:</p>
+<ul class="simple">
+<li>you have a backup when your laptop dies on you</li>
+<li>when you decide to tear down a section of code - you can always revert back if you find you’ve gone down the wrong path</li>
+<li>you can easily share your code and encourage others to assist</li>
+</ul>
+<div class="section" id="which-to-use">
+<h2>Which to use?</h2>
+<p>There are several contemporary version control systems you could consider using, each with their own benefits. Client-server (or centralised) version control systems maintain a master copy on a central server with a local copy being “checked out” by a client. Generally the server maintains the full version history and the client only accesses a specific version as a working copy. Distributed version control systems (DVCS) don’t require a central master copy and all instances of the codebase includes the full version history.</p>
+<p>If you don’t currently use a version control system, the following options are worth exploring as they’re heavily used and well documented:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Git_(software)">Git</a></li>
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Mercurial">Mercurial</a></li>
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Subversion">Subversion</a></li>
+</ul>
+<p>If you’re able to influence the selection of a version control system, it’d be worth opting for a DVCS such as Git - it has a lot of support and most up-to-date developers have used it.</p>
+</div>
+<div class="section" id="hosted-services">
+<h2>Hosted services</h2>
+<p>Historically, developers may have deferred the use of a version control system as these needed to be installed and managed on a server. However, there are a number of hosted services that take away the burden of running your own version control system. Some offer free hosting, usually for open source projects, but also offer paid accounts for closed codebases.</p>
+<p>The key hosted version control providers include:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://bitbucket.org/">Atlassian's Bitbucket</a></li>
+<li><a class="reference external" href="http://www.codeplex.com/">Microsoft's Codeplex</a></li>
+<li><a class="reference external" href="https://github.com/">GitHub</a></li>
+<li><a class="reference external" href="https://code.google.com/">Google code</a></li>
+<li><a class="reference external" href="http://sourceforge.net/">Sourceforge</a></li>
+</ul>
+</div>
+<div class="section" id="version-control-workflows">
+<h2>Version control workflows</h2>
+<p>It's one thing to use version control, it's another to use it effectively - especially when you have larger teams or multiple product versions. <a class="reference external" href="https://www.atlassian.com/git/tutorials/comparing-workflows">Atlassian provide an excellent overview</a> of the most common Git workflows - it's well worth your reading time.</p>
+</div>
+<div class="section" id="one-last-note">
+<h2>One last note</h2>
+<p>DropBox and Google Drive are not version control systems for development purpose. They are great systems for sharing documents etc but there’s a lot more development functionality and integration options in a good version control system.</p>
+</div>
+
+  </section>
+
+  <footer class='blog-footer'>
+    <ul class="list-group list-group-horizontal blog-post-meta blog-post-tags">
+      <li class="list-group-item">Tags:
+      <li class="list-group-item"><a href="http://www.duncan.dickinson.name/tag/development.html">development</a>
+      </li>
+      <li class="list-group-item"><a href="http://www.duncan.dickinson.name/tag/project-management.html">project management</a>
+      </li>
+    </ul>
+
+    <p class="post-nav">
+    </p>
+  </footer>
+</article>
+
+    </section>
+
+    <footer class="blog-footer">
+      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+        <img alt="Creative Commons Licence" style="border-width:0"
+          src="https://i.creativecommons.org/l/by/4.0/80x15.png">
+      </a>
+      ©2017 Duncan Dickinson
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"></script>
+    <script src="http://www.duncan.dickinson.name/theme/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </div>
+</body>
+
+</html>

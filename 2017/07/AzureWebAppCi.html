@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <title>Basic Azure web app CI pipeline</title>
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="referrer" content="origin" />
+  <meta name="generator" content="Pelican" />
+
+  <link href="https://www.duncan.dickinson.name/atom.xml" type="application/atom+xml" rel="alternate"
+    title="Prag-o-matic Atom Feed" />
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="http://www.duncan.dickinson.name/theme/css/highlight/vs.css">
+
+  <link rel="stylesheet" href="http://www.duncan.dickinson.name/theme/css/site.css">
+
+<link href="http://www.duncan.dickinson.name/2017/07/AzureWebAppCi.html" rel="canonical" />
+
+<meta name="description" content="Azure Web Apps are really handy hosting environments and support CI/CD pipelines.">
+
+<meta name="author" content="Duncan Dickinson">
+
+<meta name="tags" content="azure">
+<meta name="tags" content="app">
+<meta name="tags" content="ci">
+<meta name="tags" content="dotnet">
+
+
+</head>
+
+<body class="home-template">
+  <div class="container">
+    <header class="blog-header">
+<div class="jumbotron site-title">
+    <h1>Prag-o-matic</h1>
+    <p class="lead">A blog.</p>
+</div><nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+        aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                    <a class="nav-link" href="/pages/about.html">About</a>
+                </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/archives.html">Archives</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="http://www.linkedin.com/in/dedickinson">LinkedIn</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://github.com/dedickinson">Github</a>
+            </li>
+
+        </ul>
+        <div class="float-right">
+            <a href="/atom.xml"><i class="fas fa-rss" style="font-size: 1.5em"></i></a>
+        </div>
+    </div>
+</nav>    </header>
+
+    <section>
+<article class='blog-post'>
+  <header>
+    <h1 class='blog-post-title'>Basic Azure web app CI pipeline</h1>
+    <p class="blog-post-meta">Posted on
+      <time datetime="Fri 07 July 2017">Fri 07 July 2017</time>
+    </p>
+  </header>
+  <section class="blog-post-body">
+    <div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Azure Web Apps are really handy hosting environments and support CI/CD pipelines.</p>
+</div>
+<div class="paragraph">
+<p>This is a walkthrough of some work I did to highlight:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Configuring a project in Visual Studio Team Services (VSTS) using C# on .NET Core with ASP.NET Core</p>
+</li>
+<li>
+<p>Preparing a CI/CD pipeline in VSTS for deployment into an Azure App Service environment</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The code itself is minimal - just a random quote generator with a very limited set of quotes.
+I often use this type of codebase to demonstrate a variety of CI/CD principles - I call it my
+fortune cookie app (based on the old <a href="https://en.wikipedia.org/wiki/Fortune_(Unix)">Unix fortune program</a>).
+It&#8217;s a very useful platform for demonstrators as it can be stand-alone, use databases (relational or other),
+be a web api etc and I&#8217;ve prepared it in a range of languages and systems.</p>
+</div>
+<div class="paragraph">
+<p>Unfortunately, VSTS does not support public repositories but the code is pretty much secondary
+to the process I&#8217;ll describe. The code is a pretty basic NET Core project that comes to life with the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">dotnet restore
+dotnet build
+dotnet watch run</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_vsts_and_app_services">VSTS and App Services</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For this demo I wanted to have a basic CI/CD pipeline running that:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Built new commits</p>
+</li>
+<li>
+<p>Deploys automatically to an Azure App Service instance used for testing</p>
+</li>
+<li>
+<p>Provide a manual approval gate for the production deployment</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Defining a CI/CD pipeline can be approached in a few ways:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In VSTS as a build and release process</p>
+</li>
+<li>
+<p>In the Azure Web App itself - this is the easiest for getting started. You can then go into VSTS and expand and configure as needed.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_web_apps">The Web Apps</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>I created two Web App instancess - one for Test and one for Production.</p>
+</div>
+<div class="paragraph">
+<p>I used the free App Service Plan tier as it&#8217;s enough for the demo and you can get the whole thing
+running for $0.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+You can use slots in Web Apps to provide blue/green deployment but I&#8217;m going real simple in this demo.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If you&#8217;re going to setup CD via the Azure web app console, configure your Test web app instance first
+and use it for your Continuous Delivery configuration.
+That sets up an automatic CI/CD pipeline for you and your commits cause a release into the Test instance.
+You can then re-engineer the pipeline to include a
+Production environment (the second web app instance).</p>
+</div>
+<div class="sect2">
+<h3 id="_the_build">The Build</h3>
+<div class="paragraph">
+<p>To start off, I created a VSTS project and committed some basic "hello, world" code using
+the <code>dotnet new mvc</code> scaffold. Over in the Azure portal I went to <code>Add</code> &#8594; <code>Team projects</code>
+and linked to the VSTS team that contains the project.</p>
+</div>
+<div class="paragraph">
+<p>I then setup a web app - just a very basic config using the free tier.
+After creating a Web App in the Azure portal, I went into the App&#8217;s blade and selected the
+"Continuous Delivery" menu option. It&#8217;s pretty straight-forward to point the Web App to the
+VSTS project and Azure sets up the initial CI/CD pipeline.</p>
+</div>
+<div class="sect3">
+<h4 id="_ci">CI</h4>
+<div class="paragraph">
+<p>The screenshot below demonstrates what gets created in the VSTS project&#8217;s <code>Build</code> configuration:</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="/images/azure_ci/builditems.png" alt="Build Items">
+</div>
+<div class="title">Figure 1. The CI Build Items</div>
+</div>
+<div class="paragraph">
+<p>I disabled the <code>Test</code> stage as I won&#8217;t create tests for this demonstration.
+You can see that the CI side is just doing the basic Build, Test, Publish routine.</p>
+</div>
+<div class="paragraph">
+<p>The publish step is useful to display as it shows how the <code>configuration</code> and <code>output</code>
+parameters are set:</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="/images/azure_ci/cibuild.png" alt="The CI Pipeline">
+</div>
+<div class="title">Figure 2. The CI Pipeline</div>
+</div>
+<div class="paragraph">
+<p>I made a minor change to the Publish Artifact step as I wanted the build artifact name to
+include the Git check-in version:</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="/images/azure_ci/cipublish.png" alt="The CI Publish step">
+</div>
+<div class="title">Figure 3. The CI Publish step</div>
+</div>
+<div class="paragraph">
+<p>Only the 1 CI workflow is required for this demonstration.
+I want to build the code and package it for deployment over the various environments.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_cd">CD</h4>
+<div class="paragraph">
+<p>Over in the VSTS project&#8217;s <code>Releases</code> section you&#8217;ll find that the CD pipeline has also been configured.
+I expanded on what Azure configured for me by creating an additional environment (<code>Test</code>).
+Each of the Environments (<code>Test</code> &amp; <code>Production</code>) point to their own Web App instance:</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="/images/azure_ci/cdpipeline.png" alt="The CD Pipeline">
+</div>
+<div class="title">Figure 4. The CD Pipeline</div>
+</div>
+<div class="paragraph">
+<p>The screenshot above indicates a few things:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Each Environment has a single task (to deploy to the Web App instance)</p>
+</li>
+<li>
+<p>The <code>Test</code> environment doesn&#8217;t need manual approval but <code>Production</code> does - check the person icon</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>VSTS Releases are broken up by environment, phase and task:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>An environment is essentially a release endpoint, such as a web app instance (or slot)</p>
+</li>
+<li>
+<p>Each environment has one or more phases that provide runtime environments for carrying out tasks.</p>
+</li>
+<li>
+<p>Each phase has one or more tasks that define a work item to be completed</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>I admit it&#8217;s a little confusing but, for this demo, we keep it simple and have a single phase
+with a single task for each environment.</p>
+</div>
+<div class="paragraph">
+<p>The <code>Triggers</code> configuration for the release gives us the bridge between the CI and CD worlds.
+You can see in the screenshot below that the release will run each time CI produces a new artifact:</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="/images/azure_ci/cdreleasedefinition.png" alt="CD Release Trigger">
+</div>
+<div class="title">Figure 5. CD Release Trigger</div>
+</div>
+<div class="sect4">
+<h5 id="_test_environment">Test environment</h5>
+<div class="paragraph">
+<p>Checking out the configuration for the Test environment, you can see that there&#8217;s no approval required to deploy to <code>Test</code> - we just let it happen once CI has done its thing.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="/images/azure_ci/cdtestapprove.png" alt="CD Testing approval">
+</div>
+<div class="title">Figure 6. CD Testing approval</div>
+</div>
+<div class="paragraph">
+<p>The <code>Test</code> environment also has some configuration to handle queues -
+this is handy as I&#8217;m only using a single test endpoint and want to roll-up multiple changes
+if they start backing up:</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="/images/azure_ci/cdtestconditions.png" alt="CD Testing conditions">
+</div>
+<div class="title">Figure 7. CD Testing conditions</div>
+</div>
+<div class="paragraph">
+<p>The <code>Test</code> environment has one task, <code>Deploy Azure Service</code>.
+This is configured to deploy the new artifact to the relevant App Service.
+One important item to note is that I&#8217;ve selected "Take App Offline" -
+this is important as it avoids problems wrt replacing the running codebase with the new one:</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="/images/azure_ci/cdtestdeploy.png" alt="CD Testing app service task">
+</div>
+<div class="title">Figure 8. CD Testing app service task</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_production_environment">Production environment</h5>
+<div class="paragraph">
+<p>The <code>Production</code> environment isn&#8217;t hugely different to <code>Test</code>.
+Essentially, we want an automatic deploy into <code>Test</code> but only deploy to <code>Production</code>
+following a manual approval gate (maybe there&#8217;s a QA person):</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="/images/azure_ci/cdprodapprove.png" alt="CD Production approval">
+</div>
+<div class="title">Figure 9. CD Production approval</div>
+</div>
+<div class="paragraph">
+<p>The <code>Production</code> deployment is set to go ahead as long as <code>Test</code> was successfully deployed
+(and pending approval):</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="/images/azure_ci/cdprodconditions.png" alt="CD Production conditions">
+</div>
+<div class="title">Figure 10. CD Production conditions</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_approvals">Approvals</h3>
+<div class="paragraph">
+<p>Just a quick note about approvals. When <code>Test</code> has deployed successfully,
+the approver for <code>Production</code> receives an email similar to the one below:</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="/images/azure_ci/approvalemail.png" alt="Approval email">
+</div>
+<div class="title">Figure 11. Approval email</div>
+</div>
+<div class="paragraph">
+<p>Clicking on the approval link will take them to the VSTS site and ask them to either
+Approve or Reject (and provide comments):</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="/images/azure_ci/approvaldialog.png" alt="Approval dialog">
+</div>
+<div class="title">Figure 12. Approval dialog</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_conclusion">Conclusion</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Whilst this is a very simple application and CI/CD pipeline,
+it should serve as a basis for more advanced iterations.
+There are a number of items not covered that you should consider:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Automated testing: unit, UI, integration, load, security tests can all run from the CI/CD pipeline</p>
+</li>
+<li>
+<p>Operational concerns: how are system/application logs managed and alerts configured?</p>
+</li>
+<li>
+<p>Related services: this demo is self-contained but how would we manage resources such as databases and changes to their schemas (for example)?</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Enjoy!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references">References</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.visualstudio.com/en-us/docs/build/get-started/aspnet-4-ci-cd-azure-automatic">Use Azure to automatically generate a CI/CD pipeline to deploy an ASP.NET app</a></p>
+</li>
+<li>
+<p><a href="https://www.visualstudio.com/en-us/docs/build/concepts/definitions/release/environments">Environments in Release Management</a></p>
+</li>
+<li>
+<p><a href="https://docs.microsoft.com/en-us/aspnet/core/publishing/vsts-continuous-deployment">Continuous deployment to Azure for ASP.NET Core, with VSTS</a></p>
+</li>
+<li>
+<p><a href="https://shellmonger.com/2017/02/16/running-asp-net-core-applications-in-azure-app-service/">RUNNING ASP.NET CORE APPLICATIONS IN AZURE APP SERVICE</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+  </section>
+
+  <footer class='blog-footer'>
+    <ul class="list-group list-group-horizontal blog-post-meta blog-post-tags">
+      <li class="list-group-item">Tags:
+      <li class="list-group-item"><a href="http://www.duncan.dickinson.name/tag/app.html">app</a>
+      </li>
+      <li class="list-group-item"><a href="http://www.duncan.dickinson.name/tag/azure.html">azure</a>
+      </li>
+      <li class="list-group-item"><a href="http://www.duncan.dickinson.name/tag/ci.html">ci</a>
+      </li>
+      <li class="list-group-item"><a href="http://www.duncan.dickinson.name/tag/dotnet.html">dotnet</a>
+      </li>
+    </ul>
+
+    <p class="post-nav">
+    </p>
+  </footer>
+</article>
+
+    </section>
+
+    <footer class="blog-footer">
+      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+        <img alt="Creative Commons Licence" style="border-width:0"
+          src="https://i.creativecommons.org/l/by/4.0/80x15.png">
+      </a>
+      ©2017 Duncan Dickinson
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"></script>
+    <script src="http://www.duncan.dickinson.name/theme/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </div>
+</body>
+
+</html>

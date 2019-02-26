@@ -1,0 +1,646 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Prag-o-matic - Duncan Dickinson</title><link href="http://www.duncan.dickinson.name/" rel="alternate"></link><link href="https://www.duncan.dickinson.name/feeds/duncan-dickinson.atom.xml" rel="self"></link><id>http://www.duncan.dickinson.name/</id><updated>2017-07-07T14:22:00+10:00</updated><entry><title>Retrospective primitives - cohesion</title><link href="http://www.duncan.dickinson.name/2017/07/retrospective-primitives-cohesion.html" rel="alternate"></link><published>2017-07-07T14:22:00+10:00</published><updated>2017-07-07T14:22:00+10:00</updated><author><name>Duncan Dickinson</name></author><id>tag:www.duncan.dickinson.name,2017-07-07:/2017/07/retrospective-primitives-cohesion.html</id><summary type="html">&lt;p&gt;In my last post I briefly described three primitives that I felt could form the basis in planning and guiding retrospective activities:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;cohesion&lt;/li&gt;
+&lt;li&gt;vector&lt;/li&gt;
+&lt;li&gt;waste&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This post will focus on the &lt;strong&gt;cohesion&lt;/strong&gt; primitive and is based on cohesion’s essential question: &lt;em&gt;How well is the team working together?&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Cohesion is …&lt;/p&gt;</summary><content type="html">&lt;p&gt;In my last post I briefly described three primitives that I felt could form the basis in planning and guiding retrospective activities:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;cohesion&lt;/li&gt;
+&lt;li&gt;vector&lt;/li&gt;
+&lt;li&gt;waste&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This post will focus on the &lt;strong&gt;cohesion&lt;/strong&gt; primitive and is based on cohesion’s essential question: &lt;em&gt;How well is the team working together?&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Cohesion is all about the people of the project.&lt;/p&gt;
+&lt;div class="section" id="who-is-the-team"&gt;
+&lt;h2&gt;Who is the “team”?&lt;/h2&gt;
+&lt;p&gt;Knowing the boundary marker of “team” is very important when considering cohesion. A failure to include the right people within the boundary can lead to incorrect measures of cohesion - we need to see it as more than the “project team” defined by a budget, a project plan, or an office space.&lt;/p&gt;
+&lt;p&gt;I’d mentioned that determining the scope of “team” is a &lt;a class="reference external" href="https://en.wikipedia.org/wiki/The_Chicken_and_the_Pig"&gt;pigs and chickens thing&lt;/a&gt;. In terms of retrospective activities, it can be useful to scope the team boundary to include not just the “folks working on the project every day” but to also bring in key stakeholders - those whose actions impact the project and/or are impacted by it.&lt;/p&gt;
+&lt;p&gt;I also enjoyed a comment made by &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Dave_Snowden"&gt;Dave Snowden&lt;/a&gt; at a workshop - “critics are often people who care” (paraphrased). We often &lt;a class="reference external" href="http://theoatmeal.com/comics/believe"&gt;seek out people who agree with us&lt;/a&gt; - it just feels easier. However, we must know where the shadows fall. By ignoring certain people/groups in analysing cohesion we can be laying the ground for tension - sometimes so great that the project is dead and we don’t know it yet. I return to the need for non-binary discussions - people can respond from a black hat perspective (cautionary) but draw out other facets (positives, facts, opportunities, feelings) rather than put them in a dark corner.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="reflecting-on-cohesion"&gt;
+&lt;h2&gt;Reflecting on cohesion&lt;/h2&gt;
+&lt;p&gt;I’ll present here a set of questions that we could use to reflect on the cohesion primitive.&lt;/p&gt;
+&lt;div class="section" id="how-do-team-members-communicate"&gt;
+&lt;h3&gt;&lt;em&gt;How do team members communicate?&lt;/em&gt;&lt;/h3&gt;
+&lt;p&gt;I’ve worked with teams that talk and work almost all day long but it’s not always noisy - some teams have a steady group chat in systems like Slack. However, the question raised here is more than just about the channel - it’s a very broad “how”:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Are the conversations informal and flowing or regimented and stilted?&lt;/li&gt;
+&lt;li&gt;Do ideas get tossed around and openly discussed?&lt;/li&gt;
+&lt;li&gt;Who talks? Who doesn’t? Why?&lt;/li&gt;
+&lt;li&gt;What unspoken statement is being made through body language?&lt;/li&gt;
+&lt;li&gt;Which communication tools are being used?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In terms of retrospectives, the day-to-day chatter of team work is an ad-hoc reflection machine. Whilst some methodologies arrange a retrospective at the end of some pre-defined period, you often find that people can’t always think of input items at the time of the meeting.&lt;/p&gt;
+&lt;p&gt;You’re likely to find that the daily rhythm is actually playing these out and, by listening to them, you’re hearing the live performance and not the “best of” compilation.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="how-often-do-team-members-communicate"&gt;
+&lt;h3&gt;&lt;em&gt;How often do team members communicate?&lt;/em&gt;&lt;/h3&gt;
+&lt;p&gt;I’ve always liked Alistair Cockburn’s notion of &lt;a class="reference external" href="http://alistair.cockburn.us/Osmotic+communication"&gt;osmotic communication&lt;/a&gt;. A team that’s “humming along” likely has high cohesion. Discussions are occuring when they need to across the people they need to. Watch teams that have a lot of part-time members and it really hits you that the lack of cohesion is a deadweight loss on the effort. Team boundaries that are too narrow can drag cohesion down as well - a key user that isn’t seen as part of the team may be exactly the person needed in the discussion.&lt;/p&gt;
+&lt;p&gt;Project methods and organisational structures can lean heavily towards highly formal - regimented even - communication events. This is especially the case for environments that are highly risk-averse or lack trust. Expecting to maintain cohesion in such environments can lead to disappointment - members start to feel that it’s not worth contributing because they’ll just be told what to do anyway.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="do-team-members-feel-confident-to-raise-a-concern"&gt;
+&lt;h3&gt;&lt;em&gt;Do team members feel confident to raise a concern?&lt;/em&gt;&lt;/h3&gt;
+&lt;p&gt;We’d all like to think we work in an objective environment where the best solution wins out. Reality has illustrated to me that this isn’t the case in most teams/organisations. Each individual arrives at work with a background that has built the person who stands before you and a set of goals that move them forward. We’re often told to be &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Perfect_rationality"&gt;rational agents&lt;/a&gt; but we’re a sum of our parts and some things are too complex to completely evaluate - we &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Satisficing"&gt;satisfice&lt;/a&gt; all the time.&lt;/p&gt;
+&lt;p&gt;So when an idea is raised, how well is it discussed and, importantly, are alternate views provided &lt;em&gt;and&lt;/em&gt; considered? That’s a measure of the quality and the quantity of cohesion within the team. We want the right people contributing in a positive way.&lt;/p&gt;
+&lt;p&gt;A lack of questioning the status quo may not indicate harmony - it may indicate issues such as &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Groupthink"&gt;Groupthink&lt;/a&gt;, dominant sub-groups, or bullying within the team. These issues can be hard to detect so it can be useful to have 1:1 reflections with individuals to help garner trust.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="do-people-want-to-be-there"&gt;
+&lt;h3&gt;&lt;em&gt;Do people want to be there?&lt;/em&gt;&lt;/h3&gt;
+&lt;p&gt;I’m serious - do the team members tell you, explicitly or implictly, that they would rather be elsewhere. I worked in a project where the number of sick days just blew out - people had no motivation to even turn up. I’d almost say that a team can’t be cohesive if they don’t want to be there but that’d be wrong. Rather, you’ll find they become the wrong type of cohesive through bonding over a shared misery.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="conclusion"&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Reflecting on cohesion asks us to look at the people around us and how they interact. I’ve been a person all my life :) and I enjoy working with other people - especially in cohesive environments with lots of purpose - it just feels like we focus on important things and not trivial annoyances.&lt;/p&gt;
+&lt;p&gt;Low cohesion is a direct contributor to waste. I’m still working through how to frame cohesion in terms of vector but if feels like cohesion measure how happy the kids are in the back seat of vector’s driving holiday plans. I’ll cover these in a later post.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="some-resources"&gt;
+&lt;h2&gt;Some resources&lt;/h2&gt;
+&lt;p&gt;The list below highlights some of the resources that tie into cohesion:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference external" href="http://alistair.cockburn.us/Crystal+Clear+distilled"&gt;Crystal Clear&lt;/a&gt; principals of &lt;em&gt;osmotic communication&lt;/em&gt; and &lt;em&gt;personal safety&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;The &lt;a class="reference external" href="https://www.thisamericanlife.org/radio-archives/episode/403/nummi"&gt;Nummi&lt;/a&gt; episode of &lt;em&gt;This American Life&lt;/em&gt; is fascinating and you can hear how life for the workers could change&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://agileopedia.wikispaces.com/Empower+the+team"&gt;Self-organising teams&lt;/a&gt; fit the discussion of cohesion&lt;/li&gt;
+&lt;li&gt;The &lt;a class="reference external" href="http://www.extremeprogramming.org/values.html"&gt;Values of Extreme Programming&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/p&gt;&lt;/div&gt;
+</content><category term="cohesion"></category><category term="retrospective"></category><category term="primitives"></category></entry><entry><title>Basic Azure web app CI pipeline</title><link href="http://www.duncan.dickinson.name/2017/07/AzureWebAppCi.html" rel="alternate"></link><published>2017-07-07T00:00:00+10:00</published><updated>2017-07-07T00:00:00+10:00</updated><author><name>Duncan Dickinson</name></author><id>tag:www.duncan.dickinson.name,2017-07-07:/2017/07/AzureWebAppCi.html</id><summary type="html">Azure Web Apps are really handy hosting environments and support CI/CD pipelines.</summary><content type="html">&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Azure Web Apps are really handy hosting environments and support CI/CD pipelines.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This is a walkthrough of some work I did to highlight:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="olist arabic"&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;
+&lt;p&gt;Configuring a project in Visual Studio Team Services (VSTS) using C# on .NET Core with ASP.NET Core&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Preparing a CI/CD pipeline in VSTS for deployment into an Azure App Service environment&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The code itself is minimal - just a random quote generator with a very limited set of quotes.
+I often use this type of codebase to demonstrate a variety of CI/CD principles - I call it my
+fortune cookie app (based on the old &lt;a href="https://en.wikipedia.org/wiki/Fortune_(Unix)"&gt;Unix fortune program&lt;/a&gt;).
+It&amp;#8217;s a very useful platform for demonstrators as it can be stand-alone, use databases (relational or other),
+be a web api etc and I&amp;#8217;ve prepared it in a range of languages and systems.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Unfortunately, VSTS does not support public repositories but the code is pretty much secondary
+to the process I&amp;#8217;ll describe. The code is a pretty basic NET Core project that comes to life with the following:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="highlight"&gt;&lt;code class="language-bash" data-lang="bash"&gt;dotnet restore
+dotnet build
+dotnet watch run&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="_vsts_and_app_services"&gt;VSTS and App Services&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;For this demo I wanted to have a basic CI/CD pipeline running that:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="olist arabic"&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;
+&lt;p&gt;Built new commits&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Deploys automatically to an Azure App Service instance used for testing&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Provide a manual approval gate for the production deployment&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Defining a CI/CD pipeline can be approached in a few ways:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="olist arabic"&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;
+&lt;p&gt;In VSTS as a build and release process&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;In the Azure Web App itself - this is the easiest for getting started. You can then go into VSTS and expand and configure as needed.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="_the_web_apps"&gt;The Web Apps&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;I created two Web App instancess - one for Test and one for Production.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;I used the free App Service Plan tier as it&amp;#8217;s enough for the demo and you can get the whole thing
+running for $0.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="admonitionblock note"&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td class="icon"&gt;
+&lt;div class="title"&gt;Note&lt;/div&gt;
+&lt;/td&gt;
+&lt;td class="content"&gt;
+You can use slots in Web Apps to provide blue/green deployment but I&amp;#8217;m going real simple in this demo.
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;If you&amp;#8217;re going to setup CD via the Azure web app console, configure your Test web app instance first
+and use it for your Continuous Delivery configuration.
+That sets up an automatic CI/CD pipeline for you and your commits cause a release into the Test instance.
+You can then re-engineer the pipeline to include a
+Production environment (the second web app instance).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="_the_build"&gt;The Build&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;To start off, I created a VSTS project and committed some basic "hello, world" code using
+the &lt;code&gt;dotnet new mvc&lt;/code&gt; scaffold. Over in the Azure portal I went to &lt;code&gt;Add&lt;/code&gt; &amp;#8594; &lt;code&gt;Team projects&lt;/code&gt;
+and linked to the VSTS team that contains the project.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;I then setup a web app - just a very basic config using the free tier.
+After creating a Web App in the Azure portal, I went into the App&amp;#8217;s blade and selected the
+"Continuous Delivery" menu option. It&amp;#8217;s pretty straight-forward to point the Web App to the
+VSTS project and Azure sets up the initial CI/CD pipeline.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect3"&gt;
+&lt;h4 id="_ci"&gt;CI&lt;/h4&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The screenshot below demonstrates what gets created in the VSTS project&amp;#8217;s &lt;code&gt;Build&lt;/code&gt; configuration:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="imageblock" style="text-align: center"&gt;
+&lt;div class="content"&gt;
+&lt;img src="/images/azure_ci/builditems.png" alt="Build Items"&gt;
+&lt;/div&gt;
+&lt;div class="title"&gt;Figure 1. The CI Build Items&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;I disabled the &lt;code&gt;Test&lt;/code&gt; stage as I won&amp;#8217;t create tests for this demonstration.
+You can see that the CI side is just doing the basic Build, Test, Publish routine.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The publish step is useful to display as it shows how the &lt;code&gt;configuration&lt;/code&gt; and &lt;code&gt;output&lt;/code&gt;
+parameters are set:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="imageblock" style="text-align: center"&gt;
+&lt;div class="content"&gt;
+&lt;img src="/images/azure_ci/cibuild.png" alt="The CI Pipeline"&gt;
+&lt;/div&gt;
+&lt;div class="title"&gt;Figure 2. The CI Pipeline&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;I made a minor change to the Publish Artifact step as I wanted the build artifact name to
+include the Git check-in version:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="imageblock" style="text-align: center"&gt;
+&lt;div class="content"&gt;
+&lt;img src="/images/azure_ci/cipublish.png" alt="The CI Publish step"&gt;
+&lt;/div&gt;
+&lt;div class="title"&gt;Figure 3. The CI Publish step&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Only the 1 CI workflow is required for this demonstration.
+I want to build the code and package it for deployment over the various environments.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect3"&gt;
+&lt;h4 id="_cd"&gt;CD&lt;/h4&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Over in the VSTS project&amp;#8217;s &lt;code&gt;Releases&lt;/code&gt; section you&amp;#8217;ll find that the CD pipeline has also been configured.
+I expanded on what Azure configured for me by creating an additional environment (&lt;code&gt;Test&lt;/code&gt;).
+Each of the Environments (&lt;code&gt;Test&lt;/code&gt; &amp;amp; &lt;code&gt;Production&lt;/code&gt;) point to their own Web App instance:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="imageblock" style="text-align: center"&gt;
+&lt;div class="content"&gt;
+&lt;img src="/images/azure_ci/cdpipeline.png" alt="The CD Pipeline"&gt;
+&lt;/div&gt;
+&lt;div class="title"&gt;Figure 4. The CD Pipeline&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The screenshot above indicates a few things:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="olist arabic"&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;
+&lt;p&gt;Each Environment has a single task (to deploy to the Web App instance)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The &lt;code&gt;Test&lt;/code&gt; environment doesn&amp;#8217;t need manual approval but &lt;code&gt;Production&lt;/code&gt; does - check the person icon&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;VSTS Releases are broken up by environment, phase and task:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="olist arabic"&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;
+&lt;p&gt;An environment is essentially a release endpoint, such as a web app instance (or slot)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Each environment has one or more phases that provide runtime environments for carrying out tasks.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Each phase has one or more tasks that define a work item to be completed&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;I admit it&amp;#8217;s a little confusing but, for this demo, we keep it simple and have a single phase
+with a single task for each environment.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The &lt;code&gt;Triggers&lt;/code&gt; configuration for the release gives us the bridge between the CI and CD worlds.
+You can see in the screenshot below that the release will run each time CI produces a new artifact:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="imageblock" style="text-align: center"&gt;
+&lt;div class="content"&gt;
+&lt;img src="/images/azure_ci/cdreleasedefinition.png" alt="CD Release Trigger"&gt;
+&lt;/div&gt;
+&lt;div class="title"&gt;Figure 5. CD Release Trigger&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect4"&gt;
+&lt;h5 id="_test_environment"&gt;Test environment&lt;/h5&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Checking out the configuration for the Test environment, you can see that there&amp;#8217;s no approval required to deploy to &lt;code&gt;Test&lt;/code&gt; - we just let it happen once CI has done its thing.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="imageblock" style="text-align: center"&gt;
+&lt;div class="content"&gt;
+&lt;img src="/images/azure_ci/cdtestapprove.png" alt="CD Testing approval"&gt;
+&lt;/div&gt;
+&lt;div class="title"&gt;Figure 6. CD Testing approval&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The &lt;code&gt;Test&lt;/code&gt; environment also has some configuration to handle queues -
+this is handy as I&amp;#8217;m only using a single test endpoint and want to roll-up multiple changes
+if they start backing up:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="imageblock" style="text-align: center"&gt;
+&lt;div class="content"&gt;
+&lt;img src="/images/azure_ci/cdtestconditions.png" alt="CD Testing conditions"&gt;
+&lt;/div&gt;
+&lt;div class="title"&gt;Figure 7. CD Testing conditions&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The &lt;code&gt;Test&lt;/code&gt; environment has one task, &lt;code&gt;Deploy Azure Service&lt;/code&gt;.
+This is configured to deploy the new artifact to the relevant App Service.
+One important item to note is that I&amp;#8217;ve selected "Take App Offline" -
+this is important as it avoids problems wrt replacing the running codebase with the new one:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="imageblock" style="text-align: center"&gt;
+&lt;div class="content"&gt;
+&lt;img src="/images/azure_ci/cdtestdeploy.png" alt="CD Testing app service task"&gt;
+&lt;/div&gt;
+&lt;div class="title"&gt;Figure 8. CD Testing app service task&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect4"&gt;
+&lt;h5 id="_production_environment"&gt;Production environment&lt;/h5&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The &lt;code&gt;Production&lt;/code&gt; environment isn&amp;#8217;t hugely different to &lt;code&gt;Test&lt;/code&gt;.
+Essentially, we want an automatic deploy into &lt;code&gt;Test&lt;/code&gt; but only deploy to &lt;code&gt;Production&lt;/code&gt;
+following a manual approval gate (maybe there&amp;#8217;s a QA person):&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="imageblock" style="text-align: center"&gt;
+&lt;div class="content"&gt;
+&lt;img src="/images/azure_ci/cdprodapprove.png" alt="CD Production approval"&gt;
+&lt;/div&gt;
+&lt;div class="title"&gt;Figure 9. CD Production approval&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The &lt;code&gt;Production&lt;/code&gt; deployment is set to go ahead as long as &lt;code&gt;Test&lt;/code&gt; was successfully deployed
+(and pending approval):&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="imageblock" style="text-align: center"&gt;
+&lt;div class="content"&gt;
+&lt;img src="/images/azure_ci/cdprodconditions.png" alt="CD Production conditions"&gt;
+&lt;/div&gt;
+&lt;div class="title"&gt;Figure 10. CD Production conditions&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="_approvals"&gt;Approvals&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Just a quick note about approvals. When &lt;code&gt;Test&lt;/code&gt; has deployed successfully,
+the approver for &lt;code&gt;Production&lt;/code&gt; receives an email similar to the one below:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="imageblock" style="text-align: center"&gt;
+&lt;div class="content"&gt;
+&lt;img src="/images/azure_ci/approvalemail.png" alt="Approval email"&gt;
+&lt;/div&gt;
+&lt;div class="title"&gt;Figure 11. Approval email&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Clicking on the approval link will take them to the VSTS site and ask them to either
+Approve or Reject (and provide comments):&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="imageblock" style="text-align: center"&gt;
+&lt;div class="content"&gt;
+&lt;img src="/images/azure_ci/approvaldialog.png" alt="Approval dialog"&gt;
+&lt;/div&gt;
+&lt;div class="title"&gt;Figure 12. Approval dialog&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="_conclusion"&gt;Conclusion&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Whilst this is a very simple application and CI/CD pipeline,
+it should serve as a basis for more advanced iterations.
+There are a number of items not covered that you should consider:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="olist arabic"&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;
+&lt;p&gt;Automated testing: unit, UI, integration, load, security tests can all run from the CI/CD pipeline&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Operational concerns: how are system/application logs managed and alerts configured?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Related services: this demo is self-contained but how would we manage resources such as databases and changes to their schemas (for example)?&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Enjoy!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="_references"&gt;References&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://www.visualstudio.com/en-us/docs/build/get-started/aspnet-4-ci-cd-azure-automatic"&gt;Use Azure to automatically generate a CI/CD pipeline to deploy an ASP.NET app&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://www.visualstudio.com/en-us/docs/build/concepts/definitions/release/environments"&gt;Environments in Release Management&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://docs.microsoft.com/en-us/aspnet/core/publishing/vsts-continuous-deployment"&gt;Continuous deployment to Azure for ASP.NET Core, with VSTS&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://shellmonger.com/2017/02/16/running-asp-net-core-applications-in-azure-app-service/"&gt;RUNNING ASP.NET CORE APPLICATIONS IN AZURE APP SERVICE&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content><category term="azure"></category><category term="app"></category><category term="ci"></category><category term="dotnet"></category></entry><entry><title>AWS CIS Audit tool</title><link href="http://www.duncan.dickinson.name/2017/07/AwsCisAudit.html" rel="alternate"></link><published>2017-07-06T00:00:00+10:00</published><updated>2017-07-06T00:00:00+10:00</updated><author><name>Duncan Dickinson</name></author><id>tag:www.duncan.dickinson.name,2017-07-06:/2017/07/AwsCisAudit.html</id><summary type="html">A set of Behave features to track an AWS environment against the CIS benchmarks</summary><content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;The Center for Internet Security (CIS) released
+&lt;a href="https://d0.awsstatic.com/whitepapers/compliance/AWS_CIS_Foundations_Benchmark.pdf"&gt;guidelines for AWS&lt;/a&gt; and I
+thought it&amp;#8217;d be interesting to describe these in &lt;a href="https://github.com/cucumber/cucumber/wiki/Gherkin"&gt;Gherkin&lt;/a&gt;.
+I could then back the statements with small Python scripts to run the checks through the use of the
+the &lt;a href="https://pythonhosted.org/behave/"&gt;Behave package&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;As you can see in the example feature below, the Gherkin syntax is reasonably readable:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="highlight"&gt;&lt;code class="language-gherkin" data-lang="gherkin"&gt;@kms
+Feature: AWS Key Management Services
+
+  @cis @level_2
+  Scenario: CIS 2.8 Ensure rotation for customer created CMKs is enabled
+    Then all KMS keys must be set to rotate annually&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The statements then map to Python functions that do the actual work. Calling &lt;code&gt;behave&lt;/code&gt; against the
+set of tests generates JUnit-based XML output so I then pass them through &lt;a href="https://github.com/inorton/junit2html"&gt;junit2html&lt;/a&gt;
+for easier reviews.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Overall it&amp;#8217;s an interesting approach and gives you a user-friendly description of the tests and
+output that could be analysed by non-developers. Better yet, failed tests could raise an alarm.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;A good chunk of the tests work but it&amp;#8217;s definitely not finished.
+&lt;a href="https://bitbucket.org/duncan_dickinson/aws-cis-audit"&gt;Check out the code&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+</content><category term="aws"></category><category term="api"></category><category term="python"></category><category term="cis"></category><category term="security"></category></entry><entry><title>Primitives for retrospectives</title><link href="http://www.duncan.dickinson.name/2017/07/primitives-for-retrospectives.html" rel="alternate"></link><published>2017-07-05T18:49:00+10:00</published><updated>2017-07-05T18:49:00+10:00</updated><author><name>Duncan Dickinson</name></author><id>tag:www.duncan.dickinson.name,2017-07-05:/2017/07/primitives-for-retrospectives.html</id><summary type="html">&lt;p&gt;Lately, I’ve been trying to work out a set of “primitives” for retrospectives that can apply to a range of project approaches, IT systems and organisational cultures. The idea is to have baseline concepts (primitives) that can be used to guide thought and discussion. To aid my thinking I …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Lately, I’ve been trying to work out a set of “primitives” for retrospectives that can apply to a range of project approaches, IT systems and organisational cultures. The idea is to have baseline concepts (primitives) that can be used to guide thought and discussion. To aid my thinking I decided to present the early thought model here so as to formalise the idea and seek feedback.
+Retrospectives are not solely an agile concept and don’t even need to be formally held. You may run a retrospective with the project team every &lt;em&gt;n&lt;/em&gt; days/weeks or as a personal reflection with your morning coffee. I’d like to lay out and develop some areas for such consideration.
+I’ve come up with three primitives:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;cohesion&lt;/li&gt;
+&lt;li&gt;vector&lt;/li&gt;
+&lt;li&gt;waste&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;My feeling is that these three interconnected concepts have utility to teams working on delivering an IT system. You may talk any combination of scrum, waterfall, microservices, legacy, cloud and so on but I think those three primitives are core to the work you do. I’ll delve (briefly) into these in the coming sections and would enjoy your critique via comments to this post. For each primitive I’ll also provide an &lt;a class="reference external" href="http://www.fno.org/nov97/toolkit.html"&gt;essential question&lt;/a&gt; as the organising focus.&lt;/p&gt;
+&lt;div class="section" id="cohesion"&gt;
+&lt;h2&gt;Cohesion&lt;/h2&gt;
+&lt;p&gt;Essential question: &lt;em&gt;How well is the team working together?&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;This is a &lt;em&gt;people&lt;/em&gt; question and it’s vital. The people in a project and how they interact will determine its outcome. How you define “team” is dependent on many things but it’s a &lt;a class="reference external" href="https://en.wikipedia.org/wiki/The_Chicken_and_the_Pig"&gt;pigs and chickens thing&lt;/a&gt; - you should primarily include those who have skin in the game in your evaluation but be careful of ignoring the chickens.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="vector"&gt;
+&lt;h2&gt;Vector&lt;/h2&gt;
+&lt;p&gt;Essential question: &lt;em&gt;How well are we moving in the right direction?&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Vectors have magnitude and direction and projects should too. However you describe “scope” (magnitude) you need to make sure you have the right amount - too much and you get crushed. How well you’re tracking (direction) is also important. Some projects are based on a set of deliverables so you evaluate how well the work is going in terms of meeting those deliverables within the agreed timeframe. Other projects are time &amp;amp; material based so you evaluate them in terms of how well they’re meeting client expectations. In both cases your project’s vector is important but is evaluated in different ways.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="waste"&gt;
+&lt;h2&gt;Waste&lt;/h2&gt;
+&lt;p&gt;Essential question: &lt;em&gt;What gets in our way?&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://en.wikipedia.org/wiki/Muda_(Japanese_term)"&gt;Waste reduction&lt;/a&gt; is very much from the Lean playbook but is broadly applicable. Analysis of this primitive asks us to look at formal and informal contexts that soak up time and resources without providing any real return on the outcome. Some things get in the way that we can remediate. Some things seem annoying but are critical. Take security penetration testing for example - having to wait for a centralised security team to run the test suite may be wasteful if the project team could run it themselves on-demand. You should still run the test but need to determine if the process can be improved.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="using-the-primitives"&gt;
+&lt;h2&gt;Using the primitives&lt;/h2&gt;
+&lt;p&gt;It’s important that the primitives aren’t seen as negatives and are evaluated from different angles. Non binary approaches such as the &lt;a class="reference external" href="http://blog.duncan.dickinson.name/2014/11/try-on-thinking-hats-part-1.html"&gt;thinking hats&lt;/a&gt; are useful here. You’re seeking to improve, not to blame.&lt;/p&gt;
+&lt;p&gt;Each primitive is also abstract so you need to determine how they attend to the work at hand. For example, “where do we experience waste?” is not a very useful question. Instead, a project experiencing a lot of system failures (a waste) might ask if their delivery pipeline needs a tune-up.&lt;/p&gt;
+&lt;p&gt;The team/individual would consider each primitive using the well-trod questions:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;What are we doing well?&lt;/li&gt;
+&lt;li&gt;What have we improved on?&lt;/li&gt;
+&lt;li&gt;What needs improving?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It’s important to note areas for improvement and track progress in resolving them. Naturally, the team can’t solve everything so prioritisation is the key. It’s also important to celebrate not just the delivered units of work but also the improved work processes.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="conclusion"&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;I’ve outlined three retrospective primitives and how they can be considered. I’m still thinking through possible additions. I also recognise that there’s a coupling across those that I have listed. For example, low cohesion is wasteful as information isn’t flowing through the team.&lt;/p&gt;
+&lt;p&gt;I’d enjoy your feedback.&lt;/p&gt;
+&lt;/div&gt;
+</content><category term="retrospectives"></category><category term="6hats"></category></entry><entry><title>AWS Cache and reporting demo</title><link href="http://www.duncan.dickinson.name/2017/07/AwsCache.html" rel="alternate"></link><published>2017-07-04T00:00:00+10:00</published><updated>2017-07-04T00:00:00+10:00</updated><author><name>Duncan Dickinson</name></author><id>tag:www.duncan.dickinson.name,2017-07-04:/2017/07/AwsCache.html</id><summary type="html">A python module for caching AWS API calls and a demo reporting tool that uses it</summary><content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;Calling the AWS API using the &lt;a href="https://boto3.readthedocs.io/en/latest/"&gt;Boto3&lt;/a&gt; package for Python
+is straight forward but it can be useful to have a cache of the responses. These two projects
+created an initial caching tool and an associated report generator.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Whilst the AWS Console is reasonably user-friendly, it can be difficult to paint a full picture
+of your AWS environment. This set of work sought to generate useful reports for readers such as
+netowrk and security folks. The goal was to produce summary information regarding key AWS-based
+resources and even (gulp) network diagrams.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Two repositories make up the resulting codebase:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="dlist"&gt;
+&lt;dl&gt;
+&lt;dt class="hdlist1"&gt;&lt;a href="https://bitbucket.org/duncan_dickinson/awscache"&gt;AWS Cache&lt;/a&gt;&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;A Python package that calls the AWS API (through Boto3) and stores the results in an SQLite
+database. The system uses the &lt;a href="http://www.sqlalchemy.org"&gt;SQLAlchemy&lt;/a&gt; toolkit to store the data
+and manage relationships. This work also gave me the opportunity to create my first Python
+wheel.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class="hdlist1"&gt;&lt;a href="https://bitbucket.org/duncan_dickinson/awsreporter"&gt;AWS Reporter&lt;/a&gt;&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;A sample script that uses the AWS Cache to generate reports on an AWS account.
+The script calls AWS Cache to build the cache then processes a set of Jinja 2 templates
+to produce a set of &lt;a href="http://asciidoctor.org"&gt;Asciidoctor&lt;/a&gt; documents. These are then easily
+transformed to HTML via a docker-based command.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Just running the &lt;code&gt;awscache&lt;/code&gt; command (made available via the AWS Cache package) with the right
+credentials will generate an SQLite database with details of your key AWS resources - such as
+IAM users/groups, KMS keys, Cloud Formation stacks, and Network topology (VPCs, VPNs, subnets etc).
+You can then use this database file in various reporting/querying tools.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The AWS Reporter project utilises the cache to generate HTML-based reports. After a fair bit
+of effort I even managed to generate a diagram for each VPC that illustrates the various subnets,
+route tables, gateways and their relationships.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Unfortunately I can&amp;#8217;t give you sample outputs - best not to reveal too much about the AWS
+environment.&lt;/p&gt;
+&lt;/div&gt;
+</content><category term="aws"></category><category term="api"></category><category term="python"></category><category term="asciidoctor"></category></entry><entry><title>cx_Oracle with AWS Lambda</title><link href="http://www.duncan.dickinson.name/2017/06/LambdacxOracle.html" rel="alternate"></link><published>2017-06-22T00:00:00+10:00</published><updated>2017-06-22T00:00:00+10:00</updated><author><name>Duncan Dickinson</name></author><id>tag:www.duncan.dickinson.name,2017-06-22:/2017/06/LambdacxOracle.html</id><summary type="html">Using an AWS Python Lambda to read a CSV in S3 and update an Oracle RDS instance.</summary><content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;This work was part of a demonstration to a development team regarding the use of AWS for
+web-based applications. I was demonstrating a few approaches:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="olist arabic"&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;
+&lt;p&gt;Using a Lift &amp;amp; Shift approach that replicated the Oracle Database + PHP web app environment:&lt;/p&gt;
+&lt;div class="olist loweralpha"&gt;
+&lt;ol class="loweralpha" type="a"&gt;
+&lt;li&gt;
+&lt;p&gt;Input data (CSV) sent to S3 via a nightly upload&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Change to the S3 bucket triggers a Lambda to update the RDS-based Database&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;PHP application largely the same but with alterations that made it more self-contained&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Going "serverless" by:&lt;/p&gt;
+&lt;div class="olist loweralpha"&gt;
+&lt;ol class="loweralpha" type="a"&gt;
+&lt;li&gt;
+&lt;p&gt;Input data (CSV) sent to S3 via a nightly upload&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Change to the S3 bucket triggers a Lambda that performs an ETL process to generate a set of
+static &lt;a href="http://jsonapi.org"&gt;JSON API&lt;/a&gt; files to be stored in another S3 bucket&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;An API Gateway then maps an API to the underlying S3-based JSON API data&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Two web apps were then developed by the dev team: a PHP that used the API and a JavaScript-based
+app that ran client-side.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;In order to achieve item 1.b we needed to setup a Python 2 Lambda that can connect to the
+Oracle database. Support for this is via the &lt;a href="https://oracle.github.io/python-cx_Oracle/"&gt;cx_Oracle&lt;/a&gt;
+module but it requires more than a &lt;code&gt;pip install&lt;/code&gt; as the module expects access to the Oracle client.
+You can see what happens by running up a container (&lt;code&gt;docker run --rm -ti python:3 /bin/bash&lt;/code&gt;)
+and trying out the module:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="highlight"&gt;&lt;code class="language-bash" data-lang="bash"&gt;root@6bba52c06926:/# python -m pip install cx_Oracle --pre
+Collecting cx_Oracle
+  Downloading cx_Oracle-6.0rc1-cp36-cp36m-manylinux1_x86_64.whl (487kB)
+    100% |████████████████████████████████| 491kB 2.0MB/s
+Installing collected packages: cx-Oracle
+Successfully installed cx-Oracle-6.0rc1
+root@6bba52c06926:/# python
+Python 3.6.1 (default, May 11 2017, 22:14:44)
+[GCC 4.9.2] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+&amp;gt;&amp;gt;&amp;gt; import cx_Oracle
+Traceback (most recent call last):
+  File "&amp;lt;stdin&amp;gt;", line 1, in &amp;lt;module&amp;gt;
+cx_Oracle.DatabaseError: DPI-1047: Oracle Client library cannot be loaded: libclntsh.so: cannot open shared object file: No such file or directory. See https://oracle.github.io/odpi/doc/installation.html for help&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;I have a few images with cx_Oracle running but needed to package up a distributable that can go
+to Lambda. As you&amp;#8217;ll see in the &lt;a href="https://bitbucket.org/duncan_dickinson/lambda-cx_oracle-public"&gt;Bitbucket repo&amp;#8217;s Readme&lt;/a&gt;,
+I ended up with the following process:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="olist arabic"&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;
+&lt;p&gt;Create a container image (based on &lt;code&gt;amazonlinux&lt;/code&gt;) that:&lt;/p&gt;
+&lt;div class="olist loweralpha"&gt;
+&lt;ol class="loweralpha" type="a"&gt;
+&lt;li&gt;
+&lt;p&gt;Provides the requisite software and configuration&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Packages up the required shared libraries (&lt;em&gt;after a lot of web searching and testing&lt;/em&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Run up an instance of the image and copy out the package&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Create a Lambda with:&lt;/p&gt;
+&lt;div class="olist loweralpha"&gt;
+&lt;ol class="loweralpha" type="a"&gt;
+&lt;li&gt;
+&lt;p&gt;The package as the Lambda source&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The correct envrionment variables for accessing the shared libraries&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The end product is a repeatable deployment process - we just needed to provide the Python script
+to read from S3 into the Oracle RDS DB.&lt;/p&gt;
+&lt;/div&gt;
+</content><category term="aws"></category><category term="lambda"></category><category term="python"></category><category term="oracle"></category></entry></feed>
