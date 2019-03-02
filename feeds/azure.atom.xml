@@ -1,5 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Prag-o-matic - azure</title><link href="https://www.duncan.dickinson.name/" rel="alternate"></link><link href="https://www.duncan.dickinson.name/feeds/azure.atom.xml" rel="self"></link><id>https://www.duncan.dickinson.name/</id><updated>2017-07-07T00:00:00+10:00</updated><entry><title>Basic Azure web app CI pipeline</title><link href="https://www.duncan.dickinson.name/2017/07/AzureWebAppCi.html" rel="alternate"></link><published>2017-07-07T00:00:00+10:00</published><updated>2017-07-07T00:00:00+10:00</updated><author><name>Duncan Dickinson</name></author><id>tag:www.duncan.dickinson.name,2017-07-07:/2017/07/AzureWebAppCi.html</id><summary type="html">Azure Web Apps are really handy hosting environments and support CI/CD pipelines.</summary><content type="html">&lt;div id="preamble"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Prag-o-matic - azure</title><link href="https://www.duncan.dickinson.name/" rel="alternate"></link><link href="https://www.duncan.dickinson.name/feeds/azure.atom.xml" rel="self"></link><id>https://www.duncan.dickinson.name/</id><updated>2019-03-02T00:00:00+10:00</updated><entry><title>Az PowerShell in Automation</title><link href="https://www.duncan.dickinson.name/2019/03/azure-automation-az.html" rel="alternate"></link><published>2019-03-02T00:00:00+10:00</published><updated>2019-03-02T00:00:00+10:00</updated><author><name>Duncan Dickinson</name></author><id>tag:www.duncan.dickinson.name,2019-03-02:/2019/03/azure-automation-az.html</id><summary type="html">&lt;p class="first last"&gt;Using the Az modules in Azure Automation&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;Runbooks in Azure Automation Accounts primarily use the older &lt;cite&gt;AzureRM&lt;/cite&gt; PowerShell
+module. However, you can start using the newer &lt;a class="reference external" href="https://docs.microsoft.com/en-us/powershell/module/?view=azps-1.4.0"&gt;Az PowerShell module&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The process is essentially:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Create an automation account&lt;/li&gt;
+&lt;li&gt;Install the &lt;tt class="docutils literal"&gt;Az.Accounts&lt;/tt&gt; module&lt;/li&gt;
+&lt;li&gt;Create an &lt;tt class="docutils literal"&gt;Azure Run As Account&lt;/tt&gt;&lt;/li&gt;
+&lt;li&gt;Prepare a small Runbook to test the setup&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Get started by preparing a resource group and automation account:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+New-AzResourceGroup -Name &amp;quot;demo_automation&amp;quot; -Location &amp;quot;East US&amp;quot;
+
+New-AzAutomationAccount -Name &amp;quot;AzDemoAutomationAccount&amp;quot; -Location &amp;quot;East US&amp;quot; -ResourceGroupName &amp;quot;demo_automation&amp;quot;
+&lt;/pre&gt;
+&lt;p&gt;Install the &lt;a class="reference external" href="https://www.powershellgallery.com/packages/Az.Accounts/1.3.0"&gt;Az.Accounts module&lt;/a&gt;:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+New-AzAutomationModule -AutomationAccountName &amp;quot;AzDemoAutomationAccount&amp;quot; -Name &amp;quot;Az.Accounts&amp;quot; -ContentLink &amp;quot;https://www.powershellgallery.com/api/v2/package/Az.Accounts/1.3.0&amp;quot; -ResourceGroupName &amp;quot;demo_automation&amp;quot;
+&lt;/pre&gt;
+&lt;p&gt;Note: &lt;em&gt;You can also install the ``Az.Accounts`` module via the `Modules gallery` in the automation account settings.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Now create the Runbook:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+New-AzAutomationRunbook -AutomationAccountName &amp;quot;AzDemoAutomationAccount&amp;quot; -Name &amp;quot;AzAccountTest&amp;quot; -ResourceGroupName &amp;quot;demo_automation&amp;quot; -Type &amp;quot;PowerShell&amp;quot;
+&lt;/pre&gt;
+&lt;p&gt;At this stage you can head to the Azure Portal and go to the automation account you just created.
+Under &lt;tt class="docutils literal"&gt;Account Settings &lt;span class="pre"&gt;-&amp;gt;&lt;/span&gt; Run as accounts&lt;/tt&gt;, create the &lt;tt class="docutils literal"&gt;Azure Run As Account&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;Finally, add the following code to the Runbook:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+$connection = Get-AutomationConnection -Name AzureRunAsConnection
+
+Connect-AzAccount -ServicePrincipal `
+                -Tenant $connection.TenantId `
+                -ApplicationID $connection.ApplicationId `
+                -CertificateThumbprint $connection.CertificateThumbprint
+
+Get-AzContext
+&lt;/pre&gt;
+&lt;p&gt;You can now test the Runbook and should see the output of &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;Get-AzContext&lt;/span&gt;&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;At this point you can add further &lt;tt class="docutils literal"&gt;Az.*&lt;/tt&gt; modules as required. Just be
+aware that you shouldn't (can't) mix &lt;tt class="docutils literal"&gt;Az&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;AzureRM&lt;/tt&gt; calls in the
+same script.&lt;/p&gt;
+</content><category term="azure"></category><category term="powershell"></category></entry><entry><title>Basic Azure web app CI pipeline</title><link href="https://www.duncan.dickinson.name/2017/07/AzureWebAppCi.html" rel="alternate"></link><published>2017-07-07T00:00:00+10:00</published><updated>2017-07-07T00:00:00+10:00</updated><author><name>Duncan Dickinson</name></author><id>tag:www.duncan.dickinson.name,2017-07-07:/2017/07/AzureWebAppCi.html</id><summary type="html">Azure Web Apps are really handy hosting environments and support CI/CD pipelines.</summary><content type="html">&lt;div id="preamble"&gt;
 &lt;div class="sectionbody"&gt;
 &lt;div class="paragraph"&gt;
 &lt;p&gt;Azure Web Apps are really handy hosting environments and support CI/CD pipelines.&lt;/p&gt;
