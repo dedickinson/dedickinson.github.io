@@ -26,7 +26,7 @@ Install the `Az.Accounts module <https://www.powershellgallery.com/packages/Az.A
 
     New-AzAutomationModule -AutomationAccountName "AzDemoAutomationAccount" -Name "Az.Accounts" -ContentLink "https://www.powershellgallery.com/api/v2/package/Az.Accounts/1.3.0" -ResourceGroupName "demo_automation"
 
-Note: *You can also install the ``Az.Accounts`` module via the `Modules gallery` in the automation account settings.*
+Note: *You can also install the Az.Accounts module via the Modules gallery in the automation account settings.*
 
 Now create the Runbook::
 
