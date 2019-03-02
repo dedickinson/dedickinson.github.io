@@ -41,6 +41,7 @@ Get-AzContext
 &lt;p&gt;At this point you can add further &lt;tt class="docutils literal"&gt;Az.*&lt;/tt&gt; modules as required.
 Just be aware that you shouldn't (can't) mix &lt;tt class="docutils literal"&gt;Az&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;AzureRM&lt;/tt&gt;
 calls in the same script.&lt;/p&gt;
+&lt;p&gt;See also: &lt;a class="reference external" href="https://docs.microsoft.com/en-us/azure/automation/az-modules)"&gt;Az module support in Azure Automation&lt;/a&gt;&lt;/p&gt;
 </content><category term="azure"></category><category term="powershell"></category></entry><entry><title>Basic Azure web app CI pipeline</title><link href="https://www.duncan.dickinson.name/2017/07/AzureWebAppCi.html" rel="alternate"></link><published>2017-07-07T00:00:00+10:00</published><updated>2017-07-07T00:00:00+10:00</updated><author><name>Duncan Dickinson</name></author><id>tag:www.duncan.dickinson.name,2017-07-07:/2017/07/AzureWebAppCi.html</id><summary type="html">Azure Web Apps are really handy hosting environments and support CI/CD pipelines.</summary><content type="html">&lt;div id="preamble"&gt;
 &lt;div class="sectionbody"&gt;
 &lt;div class="paragraph"&gt;
