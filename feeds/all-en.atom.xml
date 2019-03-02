@@ -38,9 +38,9 @@ Connect-AzAccount -ServicePrincipal `
 Get-AzContext
 &lt;/pre&gt;
 &lt;p&gt;You can now test the Runbook and should see the output of &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;Get-AzContext&lt;/span&gt;&lt;/tt&gt;.&lt;/p&gt;
-&lt;p&gt;At this point you can add further &lt;tt class="docutils literal"&gt;Az.*&lt;/tt&gt; modules as required. Just be
-aware that you shouldn't (can't) mix &lt;tt class="docutils literal"&gt;Az&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;AzureRM&lt;/tt&gt; calls in the
-same script.&lt;/p&gt;
+&lt;p&gt;At this point you can add further &lt;tt class="docutils literal"&gt;Az.*&lt;/tt&gt; modules as required.
+Just be aware that you shouldn't (can't) mix &lt;tt class="docutils literal"&gt;Az&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;AzureRM&lt;/tt&gt;
+calls in the same script.&lt;/p&gt;
 </content><category term="azure"></category><category term="powershell"></category></entry><entry><title>Retrospective primitives - cohesion</title><link href="https://www.duncan.dickinson.name/2017/07/retrospective-primitives-cohesion.html" rel="alternate"></link><published>2017-07-07T14:22:00+10:00</published><updated>2017-07-07T14:22:00+10:00</updated><author><name>Duncan Dickinson</name></author><id>tag:www.duncan.dickinson.name,2017-07-07:/2017/07/retrospective-primitives-cohesion.html</id><summary type="html">&lt;p&gt;In my last post I briefly described three primitives that I felt could form the basis in planning and guiding retrospective activities:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;cohesion&lt;/li&gt;
