@@ -51,3 +51,5 @@ You can now test the Runbook and should see the output of ``Get-AzContext``.
 At this point you can add further ``Az.*`` modules as required.
 Just be aware that you shouldn't (can't) mix ``Az`` and ``AzureRM``
 calls in the same script.
+
+See also: `Az module support in Azure Automation <https://docs.microsoft.com/en-us/azure/automation/az-modules)>`_
