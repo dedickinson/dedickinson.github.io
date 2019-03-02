@@ -30,8 +30,10 @@ FEED_ATOM = 'atom.xml'
 STATIC_PATHS = [
     'images', 
     'robots.txt', 
-    'favicon.ico'
+    'favicon.ico',
+    'extra/CNAME'
 ]
+EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'},}
 
 USE_FOLDER_AS_CATEGORY = True
 ARTICLE_URL = '{date:%Y}/{date:%m}/{slug}.html'
