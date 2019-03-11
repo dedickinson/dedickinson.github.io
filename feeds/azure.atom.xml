@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Prag-o-matic - azure</title><link href="https://www.duncan.dickinson.name/" rel="alternate"></link><link href="https://www.duncan.dickinson.name/feeds/azure.atom.xml" rel="self"></link><id>https://www.duncan.dickinson.name/</id><updated>2019-03-02T00:00:00+10:00</updated><entry><title>Az PowerShell in Automation</title><link href="https://www.duncan.dickinson.name/2019/03/azure-automation-az.html" rel="alternate"></link><published>2019-03-02T00:00:00+10:00</published><updated>2019-03-02T00:00:00+10:00</updated><author><name>Duncan Dickinson</name></author><id>tag:www.duncan.dickinson.name,2019-03-02:/2019/03/azure-automation-az.html</id><summary type="html">&lt;p class="first last"&gt;Using the Az modules in Azure Automation&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Prag-o-matic - azure</title><link href="https://www.duncan.dickinson.name/" rel="alternate"></link><link href="https://www.duncan.dickinson.name/feeds/azure.atom.xml" rel="self"></link><id>https://www.duncan.dickinson.name/</id><updated>2019-03-11T00:00:00+10:00</updated><entry><title>Web App variations</title><link href="https://www.duncan.dickinson.name/2019/03/webapp-variations.html" rel="alternate"></link><published>2019-03-11T00:00:00+10:00</published><updated>2019-03-11T00:00:00+10:00</updated><author><name>Duncan Dickinson</name></author><id>tag:www.duncan.dickinson.name,2019-03-11:/2019/03/webapp-variations.html</id><summary type="html">&lt;p class="first last"&gt;When we’re looking to create a web application there are so many paths we can go down.
+As Paul Simon famously never sang, “There must be 50 ways to deploy your web app”.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;When we’re looking to create a web application there are so many paths we can go down.
+As Paul Simon famously never sang, “There must be 50 ways to deploy your web app”.&lt;/p&gt;
+&lt;p&gt;Central to the engineering decision-making are some key factors:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Which language will we use?&lt;/li&gt;
+&lt;li&gt;Which platform offers the best hosting?&lt;/li&gt;
+&lt;li&gt;How do we deploy the code to the platform?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I’ve been considering the variety of pathways so, putting my code where my mind is,
+I’ve prepared a GitHub repository with a set of recipes.
+I’ve called these “variations” and started with:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Azure Web Apps deployed with Azure DevOps&lt;/li&gt;
+&lt;li&gt;Azure Web Apps using Azure Container Registry&lt;/li&gt;
+&lt;li&gt;Azure Container Instances from Azure Container Registry&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I’ve tried to describe the approach in a manner that gets something running quickly without being overly wordy.&lt;/p&gt;
+&lt;p&gt;Take a look at &lt;a class="reference external" href="https://github.com/dedickinson/webapp-variations"&gt;Web App Variations&lt;/a&gt; on GitHub, try some variations, and let me know what you think.&lt;/p&gt;
+</content><category term="azure"></category><category term="webapp"></category><category term="containers"></category></entry><entry><title>Az PowerShell in Automation</title><link href="https://www.duncan.dickinson.name/2019/03/azure-automation-az.html" rel="alternate"></link><published>2019-03-02T00:00:00+10:00</published><updated>2019-03-02T00:00:00+10:00</updated><author><name>Duncan Dickinson</name></author><id>tag:www.duncan.dickinson.name,2019-03-02:/2019/03/azure-automation-az.html</id><summary type="html">&lt;p class="first last"&gt;Using the Az modules in Azure Automation&lt;/p&gt;
 </summary><content type="html">&lt;p&gt;Runbooks in Azure Automation Accounts primarily use the older &lt;cite&gt;AzureRM&lt;/cite&gt; PowerShell
 module. However, you can start using the newer &lt;a class="reference external" href="https://docs.microsoft.com/en-us/powershell/module/?view=azps-1.4.0"&gt;Az PowerShell module&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The process is essentially:&lt;/p&gt;
