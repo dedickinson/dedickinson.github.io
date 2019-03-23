@@ -4,8 +4,8 @@ Web App variations
 :date: 2019-03-11
 :tags: azure, webapp, containers
 :slug: webapp-variations
-:summary: 
-    When we’re looking to create a web application there are so many paths we can go down. 
+:summary:
+    When we’re looking to create a web application there are so many paths we can go down.
     As Paul Simon famously never sang, “There must be 50 ways to deploy your web app”.
 
 When we’re looking to create a web application there are so many paths we can go down.
